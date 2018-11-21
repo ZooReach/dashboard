@@ -1,0 +1,28 @@
+sudo: required
+language: python
+services:
+  - docker
+stages:
+  - test
+  - docker_hub_push
+  - deploy_dev
+addons:
+  ssh_known_hosts: $BOX
+
+jobs:
+  include:
+    - stage: test
+      name: Test
+      script: echo "Test passed"
+    - stage: docker_hub_push
+      name: Docker hub push
+      script: "./cmd-dict.sh dockerHubPush"
+    - stage: deploy_dev
+      name: Deploy dev
+      script: "./cmd-dict.sh deploy dev"
+before_install:
+  - openssl aes-256-cbc -K $encrypted_278c6e6d1ef5_key -iv $encrypted_278c6e6d1ef5_iv
+    -in deploy_key.enc -out deploy_key -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 deploy_key
+  - ssh-add deploy_key

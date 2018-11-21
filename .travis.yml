@@ -21,8 +21,7 @@ jobs:
       name: Deploy dev
       script: "./cmd-dict.sh deploy dev"
 before_install:
-  - openssl aes-256-cbc -K $encrypted_278c6e6d1ef5_key -iv $encrypted_278c6e6d1ef5_iv
-    -in deploy_key.enc -out deploy_key -d
+  - openssl aes-256-cbc -K $encrypted_b1d5dc4a027b_key -iv $encrypted_b1d5dc4a027b_iv -in deploy_key.enc -out deploy_key -d
   - eval "$(ssh-agent -s)"
   - chmod 600 deploy_key
   - ssh-add deploy_key

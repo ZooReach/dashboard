@@ -22,7 +22,7 @@ function deploy {
 		(docker container stop \$(docker container ls -q) || echo 'no containers to stop') && 
 		(docker container rm \$(docker container ls -q) || echo 'no containers to remove') && 
 		(docker image rm \$(docker image ls -q) || echo 'no images to remove') &&
-		(docker run -d --rm -p 80:4000 zooreach12/dash) &&
+		(docker run -d --rm -p 80:5000 zooreach12/dashboard_dev) &&
 		echo 'Deployed success'"
 
 	echo "Deployed message from travis"

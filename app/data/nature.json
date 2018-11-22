@@ -16,17 +16,17 @@
   },
   "odonates": {
     "label": "Odonates",
-    "enabled": true,
+    "enabled": false,
     "image": "images/placeholder.svg"
   },
   "orchids": {
     "label": "Orchids",
-    "enabled": true,
+    "enabled": false,
     "image": "images/placeholder.svg"
   },
   "plants": {
     "label": "Plants",
-    "enabled": true,
+    "enabled": false,
     "image": "images/placeholder.svg"
   },
   "primates": {
@@ -36,17 +36,17 @@
   },
   "reptiles": {
     "label": "Reptiles",
-    "enabled": true,
+    "enabled": false,
     "image": "images/placeholder.svg"
   },
   "rodents": {
     "label": "Rodents",
-    "enabled": true,
+    "enabled": false,
     "image": "images/placeholder.svg"
   },
   "spiders": {
     "label": "Spiders",
-    "enabled": true,
+    "enabled": false,
     "image": "images/placeholder.svg"
   }
 }

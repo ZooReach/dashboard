@@ -21,3 +21,13 @@
     column-count: 5;
   }
 }
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+.custom-card.disabled {
+  color: grey;
+  opacity: .3;
+}

@@ -10,12 +10,16 @@
     </ul>
   </div>
 </nav>
-{% endblock %} {% block container_header_banner %} {% endblock %} {% block
+{% endblock %} {% block container_header_banner %} 
+  <div class="banner">
+  </div>
+{% endblock %} {% block
 container_card_list %}
+<div class="sub-title text-center">Our Nature</div>
 <div class="card-columns">
   {% for id, item in cards.items() %}
   <a href="#" class="custom-card {{'disabled' if not item['enabled'] }}">
-    <div class="card" style="width: 13rem;">
+    <div class="card" style="width: 16rem;">
       <img
         class="card-img-top"
         src="{{url_for('static', filename=item['image'])}}"
@@ -28,4 +32,7 @@ container_card_list %}
   </a>
   {% endfor %}
 </div>
+{% endblock %} {% block container_download %}
+<div class="sub-title text-center">Downloadable Formats</div>
+<div></div>
 {% endblock %} {% endblock %}

@@ -16,7 +16,7 @@
 <div class="sub-title text-center">Our Nature</div>
 <div class="card-columns">
   {% for id, item in cards.items() %}
-  <a href="#" class="custom-card {{'disabled' if not item['enabled'] }}">
+  <a href="{{item['label']}}" class="custom-card {{'disabled' if not item['enabled'] }}">
     <div class="card" style="width: 13rem;">
       <img
         class="card-img-top"

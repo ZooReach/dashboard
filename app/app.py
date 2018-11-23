@@ -23,6 +23,10 @@ def home():
     with app.open_resource('data/nature.json') as f:
         species = json.load(f)
     return render_template('home.html', cards=species)
+
+@app.route('/<category>')
+def category(category):
+    return 'Page %s' % category
         
 if __name__ == '__main__':
     app.run()

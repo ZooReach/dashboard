@@ -30,7 +30,8 @@ def home():
 
 @app.route('/category/<category>')
 def category(category):
-    return render_template('category/category.html', category=category)
+    jsonData = {'Name': 'Fish', 'Description': 'description', 'Kingdom': 'kingdom'}
+    return render_template('category/category.html', category=category, jsonData=jsonData)
 
 
 if __name__ == '__main__':

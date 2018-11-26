@@ -1,10 +1,12 @@
 {% block description_container %}
 <div class="row">
     <div class="col-md-8">
+        {% for key,value in jsonData.items() %}
         <div class="row">
-            <div class="col-md-4">Name</div>
-            <div class="col-md-8">Fishes</div>
+            <div class="col-md-4">{{key}}</div>
+            <div class="col-md-8">{{value}}</div>
         </div>
+        {% endfor %}
     </div>
     <div class="col-md-4">
         <img

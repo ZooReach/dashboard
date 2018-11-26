@@ -1,0 +1,77 @@
+{
+  "ambassidae": {
+    "label": "ambassidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "aplocheilidae": {
+    "label": "aplocheilidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "bagridae": {
+    "label": "bagridae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "balitoridae": {
+    "label": "balitoridae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "clariidae": {
+    "label": "clariidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "cyprinidae": {
+    "label": "cyprinidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "gobiidae": {
+    "label": "gobiidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "hemiramphidae": {
+    "label": "hemiramphidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "mastacembelidae": {
+    "label": "mastacembelidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "psilorhynchidae": {
+    "label": "psilorhynchidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "schilbeidae": {
+    "label": "schilbeidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "siluridae": {
+    "label": "siluridae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "sisoridae": {
+    "label": "sisoridae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "synbranchidae": {
+    "label": "synbranchidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  },
+  "terapontidae": {
+    "label": "terapontidae",
+    "enabled": true,
+    "image": "images/placeholder.svg"
+  }
+}

@@ -30,8 +30,10 @@ def home():
 
 @app.route('/category/<category>')
 def category(category):
+    with app.open_resource('data/kingdom.json') as f:
+        cards = json.load(f)
     jsonData = {'Name': 'Fish', 'Description': 'description', 'Kingdom': 'kingdom'}
-    return render_template('category/category.html', category=category, jsonData=jsonData)
+    return render_template('category/category.html', category=category, jsonData=jsonData, cards=cards)
 
 
 if __name__ == '__main__':

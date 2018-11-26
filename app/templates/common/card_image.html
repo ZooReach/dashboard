@@ -1,0 +1,18 @@
+{% block card_image %}
+<div class="card-columns">
+    {% for id, item in cards.items() %}
+    <a href="category/{{id}}" class="custom-card {{'disabled' if not item['enabled'] }}">
+        <div class="card" style="width: 13rem;">
+            <img
+                    class="card-img-top"
+                    src="{{url_for('static', filename=item['image'])}}"
+                    alt="Card"
+            />
+            <div class="card-footer">
+                <h5 class="card-title text-center">{{ item["label"] }}</h5>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock card_image %}

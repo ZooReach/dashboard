@@ -1,0 +1,36 @@
+{% block downloadable %}
+<div class="download-container">
+    <div class="sub-title text-center">Downloadable Formats</div>
+    <div class="container">
+        <div class="row">
+            {% if 'csv' in formats%}
+            <div class="col text-center">
+                <div><i class="fas fa-file-csv download-icon"></i></div>
+                <div class="download-text">Machine Readable Datasets</div>
+            </div>
+            <div class="seperator"></div>
+            {% endif %}
+            {% if 'excel' in formats%}
+            <div class="col text-center">
+                <div><i class="fas fa-file-excel download-icon"></i></div>
+                <div class="download-text">Excel Sheets</div>
+            </div>
+            <div class="seperator"></div>
+            {% endif %}
+            {% if 'pdf' in formats%}
+            <div class="col text-center">
+                <div><i class="fas fa-file-pdf download-icon"></i></div>
+                <div class="download-text">Reports (PDF)</div>
+            </div>
+            <div class="seperator"></div>
+            {% endif %}
+            {% if 'visual' in formats%}
+            <div class="col text-center">
+                <div><i class="fas fa-chart-pie download-icon"></i></div>
+                <div class="download-text">Data Visualization</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock downloadable %}

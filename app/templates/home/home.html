@@ -10,32 +10,8 @@
 {% include 'common/card_image.html' %}
 
 {% endblock container_card_list%}
-{% block container_download %}
-<div class="download-container">
-    <div class="sub-title text-center">Downloadable Formats</div>
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <div><i class="fas fa-file-csv download-icon"></i></div>
-                <div class="download-text">Machine Readable Datasets</div>
-            </div>
-            <div class="seperator"></div>
-            <div class="col text-center">
-                <div><i class="fas fa-file-excel download-icon"></i></div>
-                <div class="download-text">Excel Sheets</div>
-            </div>
-            <div class="seperator"></div>
-            <div class="col text-center">
-                <div><i class="fas fa-file-pdf download-icon"></i></div>
-                <div class="download-text">Reports (PDF)</div>
-            </div>
-            <div class="seperator"></div>
-            <div class="col text-center">
-                <div><i class="fas fa-chart-pie download-icon"></i></div>
-                <div class="download-text">Data Visualization</div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock container_download %}
+
+{% set formats=['csv', 'excel', 'pdf', 'visual'] %}
+{% include 'common/downloadables.html' %}
+
 {% endblock container %}

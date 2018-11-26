@@ -18,11 +18,11 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 @app.route('/')
-@app.route('/home')
+@app.route('/main')
 def home():
     with app.open_resource('data/nature.json') as f:
         species = json.load(f)
-    return render_template('home.html', cards=species)
+    return render_template('home/home.html', cards=species)
 
 @app.route('/category/<category>')
 def category(category):

@@ -24,7 +24,7 @@ def home():
         species = json.load(f)
     return render_template('home.html', cards=species)
 
-@app.route('/<category>')
+@app.route('/category/<category>')
 def category(category):
     return 'Page %s' % category
         

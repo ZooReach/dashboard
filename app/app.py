@@ -21,7 +21,7 @@ def dated_url_for(endpoint, **values):
 
 
 @app.route('/')
-@app.route('/main')
+@app.route('/home')
 def home():
     with app.open_resource('data/nature.json') as f:
         species = json.load(f)

@@ -44,7 +44,7 @@
           "Description": "description",
           "Kingdom": "kingdom",
           "label": "Insect Eating",
-          "enabled": true,
+          "enabled": false,
           "image": "images/placeholder.svg"
         }
       }

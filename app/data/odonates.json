@@ -1,0 +1,27 @@
+{
+  "type": {
+    "odonates": {
+      "Name": "Odonates",
+      "Description": "description",
+      "Kingdom": "kingdom",
+      "type": {
+        "dragonflies": {
+          "Name": "Dragonflies",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Dragonflies",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        },
+        "damselflies": {
+          "Name": "Damselflies",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Damselflies",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
   },
   "fishes": {
     "label": "Fishes",
-    "enabled": true,
+    "enabled": false,
     "image": "images/placeholder.svg"
   },
   "molluscs": {
@@ -16,12 +16,12 @@
   },
   "odonates": {
     "label": "Odonates",
-    "enabled": false,
+    "enabled": true,
     "image": "images/placeholder.svg"
   },
   "orchids": {
     "label": "Orchids",
-    "enabled": false,
+    "enabled": true,
     "image": "images/placeholder.svg"
   },
   "plants": {
@@ -36,12 +36,12 @@
   },
   "reptiles": {
     "label": "Reptiles",
-    "enabled": false,
+    "enabled": true,
     "image": "images/placeholder.svg"
   },
   "rodents": {
     "label": "Rodents",
-    "enabled": false,
+    "enabled": true,
     "image": "images/placeholder.svg"
   },
   "spiders": {

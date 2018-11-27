@@ -1,0 +1,43 @@
+{
+  "type": {
+    "primates": {
+      "Name": "Primates",
+      "Description": "description",
+      "Kingdom": "kingdom",
+      "type": {
+        "lorises": {
+          "Name": "Lorises",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Lorises",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        },
+        "macaques": {
+          "Name": "Macaques",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Macaques",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        },
+        "langurs": {
+          "Name": "Langurs",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Langurs",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        },
+        "gibbons": {
+          "Name": "Gibbons",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Gibbons",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        }
+      }
+    }
+  }
+}

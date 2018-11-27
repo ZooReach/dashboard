@@ -1,0 +1,27 @@
+{
+  "type": {
+    "orchids": {
+      "Name": "Orchids",
+      "Description": "description",
+      "Kingdom": "kingdom",
+      "type": {
+        "ground_orchid": {
+          "Name": "Ground Orchid",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Ground Orchid",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        },
+        "tree_orchid": {
+          "Name": "Tree Orchid",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Tree Orchid",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        }
+      }
+    }
+  }
+}

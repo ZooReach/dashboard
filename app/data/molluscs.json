@@ -1,0 +1,27 @@
+{
+  "type": {
+    "molluscs": {
+      "Name": "Molluscs",
+      "Description": "description",
+      "Kingdom": "kingdom",
+      "type": {
+        "snails": {
+          "Name": "Snails",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Snails",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        },
+        "slugs": {
+          "Name": "Slugs",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "Slugs",
+          "enabled": false,
+          "image": "images/placeholder.svg"
+        }
+      }
+    }
+  }
+}

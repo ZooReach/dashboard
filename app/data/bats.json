@@ -5,11 +5,11 @@
       "Description": "description",
       "Kingdom": "kingdom",
       "type": {
-        "fruit_bats": {
-          "Name": "fruit bats",
+        "fruit_eating": {
+          "Name": "Fruit Eating",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "fruit bats",
+          "label": "Fruit Eating",
           "enabled": true,
           "image": "images/placeholder.svg",
           "type": {
@@ -39,11 +39,11 @@
             }
           }
         },
-        "insect_bats": {
-          "Name": "insect bats",
+        "insect_eating": {
+          "Name": "Insect Eating",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "insect bats",
+          "label": "Insect Eating",
           "enabled": true,
           "image": "images/placeholder.svg"
         }

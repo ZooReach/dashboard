@@ -13,7 +13,7 @@
 
 <hr class="header-line">
 
-<h3>Categories of {{category}}</h3>
+<h3>Categories of {{jsonData['Name']}}</h3>
 {% set cards=jsonData['type'] if jsonData['type'] else {} %}
 {% set href='/'.join(fullpath)+'/' %}
 {% include 'common/card_image.html' %}

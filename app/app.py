@@ -28,12 +28,18 @@ def home():
     return render_template('home/home.html', cards=species)
 
 
-@app.route('/category/<category>')
-def category(category):
-    with app.open_resource('data/kingdom.json') as f:
+@app.route('/category/<path:filename>')
+def category(filename):
+    path = filename.split('/')
+    jsonFile = 'data/' + path[0] + '.json'
+    with app.open_resource(jsonFile) as f:
         cards = json.load(f)
-    jsonData = {'Name': 'Fish', 'Description': 'description', 'Kingdom': 'kingdom'}
-    return render_template('category/category.html', category=category, jsonData=jsonData, cards=cards)
+
+    jsonData = cards
+    for name in path:
+        jsonData = jsonData['type'][name]
+
+    return render_template('category/category.html', jsonData=jsonData, fullpath=path)
 
 
 if __name__ == '__main__':

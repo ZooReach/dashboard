@@ -1,0 +1,53 @@
+{
+  "type": {
+    "bats": {
+      "Name": "Bats",
+      "Description": "description",
+      "Kingdom": "kingdom",
+      "type": {
+        "fruit_bats": {
+          "Name": "fruit bats",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "fruit bats",
+          "enabled": true,
+          "image": "images/placeholder.svg",
+          "type": {
+            "large": {
+              "Name": "large",
+              "Description": "description",
+              "Kingdom": "kingdom",
+              "label": "large",
+              "enabled": false,
+              "image": "images/placeholder.svg"
+            },
+            "medium": {
+              "Name": "fruit bats",
+              "Description": "description",
+              "Kingdom": "kingdom",
+              "label": "medium",
+              "enabled": false,
+              "image": "images/placeholder.svg"
+            },
+            "small": {
+              "Name": "fruit bats",
+              "Description": "description",
+              "Kingdom": "kingdom",
+              "label": "small",
+              "enabled": false,
+              "image": "images/placeholder.svg"
+            }
+          }
+        },
+        "insect_bats": {
+          "Name": "insect bats",
+          "Description": "description",
+          "Kingdom": "kingdom",
+          "label": "insect bats",
+          "enabled": true,
+          "image": "images/placeholder.svg"
+        }
+      }
+    }
+  }
+}

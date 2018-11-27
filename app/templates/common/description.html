@@ -2,10 +2,12 @@
 <div class="row">
     <div class="col-md-8">
         {% for key,value in jsonData.items() %}
+        {% if key in ["Name","Description","Kingdom"] %}
         <div class="row">
             <div class="col-md-4">{{key}}</div>
             <div class="col-md-8">{{value}}</div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
     <div class="col-md-4">

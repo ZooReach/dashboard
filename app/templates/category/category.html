@@ -1,12 +1,11 @@
 {% extends 'common/layout.html' %}
 {% block container %}
 
-{% include 'common/navigator.html' %}
 <br>
 <br>
 <br>
 
-<h3>{{category}}</h3>
+<h3>{{jsonData['Name']}}</h3>
 <hr class="header-line">
 <br>
 
@@ -15,6 +14,8 @@
 <hr class="header-line">
 
 <h3>Categories of {{category}}</h3>
+{% set cards=jsonData['type'] if jsonData['type'] else {} %}
+{% set href='/'.join(fullpath)+'/' %}
 {% include 'common/card_image.html' %}
 
 <hr class="header-line">

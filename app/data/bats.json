@@ -2,6 +2,7 @@
   "type": {
     "bats": {
       "Name": "Bats",
+      "image": "images/placeholder.svg",
       "Description": "description",
       "Kingdom": "kingdom",
       "type": {
@@ -9,32 +10,24 @@
           "Name": "Fruit Eating",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Fruit Eating",
-          "enabled": true,
           "image": "images/placeholder.svg",
           "type": {
             "large": {
               "Name": "large",
               "Description": "description",
               "Kingdom": "kingdom",
-              "label": "large",
-              "enabled": false,
               "image": "images/placeholder.svg"
             },
             "medium": {
               "Name": "fruit bats",
               "Description": "description",
               "Kingdom": "kingdom",
-              "label": "medium",
-              "enabled": false,
               "image": "images/placeholder.svg"
             },
             "small": {
               "Name": "fruit bats",
               "Description": "description",
               "Kingdom": "kingdom",
-              "label": "small",
-              "enabled": false,
               "image": "images/placeholder.svg"
             }
           }
@@ -43,8 +36,6 @@
           "Name": "Insect Eating",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Insect Eating",
-          "enabled": false,
           "image": "images/placeholder.svg"
         }
       }

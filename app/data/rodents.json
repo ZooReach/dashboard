@@ -3,22 +3,19 @@
     "rodents": {
       "Name": "Rodents",
       "Description": "description",
+      "image": "images/placeholder.svg",
       "Kingdom": "kingdom",
       "type": {
         "rats": {
           "Name": "Rats",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Rats",
-          "enabled": false,
           "image": "images/placeholder.svg"
         },
         "mice": {
           "Name": "Mice",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Mice",
-          "enabled": false,
           "image": "images/placeholder.svg"
         }
       }

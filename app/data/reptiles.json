@@ -3,38 +3,31 @@
     "reptiles": {
       "Name": "Reptiles",
       "Description": "description",
+      "image": "images/placeholder.svg",
       "Kingdom": "kingdom",
       "type": {
         "snakes": {
           "Name": "Snakes",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Snakes",
-          "enabled": false,
           "image": "images/placeholder.svg"
         },
         "lizards": {
           "Name": "Lizards",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Lizards",
-          "enabled": false,
           "image": "images/placeholder.svg"
         },
         "geckos": {
           "Name": "Geckos",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Geckos",
-          "enabled": false,
           "image": "images/placeholder.svg"
         },
         "skinks": {
           "Name": "Skinks",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Skinks",
-          "enabled": false,
           "image": "images/placeholder.svg"
         }
       }

@@ -20,12 +20,25 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 
+def for_each_file(data, directory, function):
+    if os.path.isdir(directory):
+        for files in os.listdir(directory):
+            data = function(data, directory, files)
+    return data
+
+
+def update_json_from_file(jsonData, directory, files):
+    with app.open_resource(directory + '/' + files) as jsonfiles:
+        jsonData.update(json.load(jsonfiles)['type'])
+    return jsonData
+
+
 @app.route('/')
 @app.route('/home')
 def home():
-    with app.open_resource('data/nature.json') as f:
-        species = json.load(f)
-    return render_template('home/home.html', cards=species)
+    directory = 'data'
+    jsonData = {}
+    return render_template('home/home.html', jsonData=for_each_file(jsonData, directory, update_json_from_file))
 
 
 @app.route('/category/<path:filename>')
@@ -48,6 +61,11 @@ def getType(path, type):
     for name in path:
         jsonData = jsonData['type'][name]
     return jsonData
+
+
+def append_files(jsfiles, filename, files):
+    jsfiles.append(filename + '/' + files)
+    return jsfiles
 
 
 def getVisualFiles(filename):

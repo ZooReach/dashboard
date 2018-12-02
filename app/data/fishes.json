@@ -1,0 +1,10 @@
+{
+  "type": {
+    "fishes": {
+      "Name": "Fishes",
+      "Description": "description",
+      "image": "images/placeholder.svg",
+      "Kingdom": "kingdom"
+    }
+  }
+}

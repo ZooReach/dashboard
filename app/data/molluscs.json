@@ -2,6 +2,7 @@
   "type": {
     "molluscs": {
       "Name": "Molluscs",
+      "image": "images/placeholder.svg",
       "Description": "description",
       "Kingdom": "kingdom",
       "type": {
@@ -9,16 +10,12 @@
           "Name": "Snails",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Snails",
-          "enabled": false,
           "image": "images/placeholder.svg"
         },
         "slugs": {
           "Name": "Slugs",
           "Description": "description",
           "Kingdom": "kingdom",
-          "label": "Slugs",
-          "enabled": false,
           "image": "images/placeholder.svg"
         }
       }

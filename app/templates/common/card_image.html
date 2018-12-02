@@ -1,7 +1,7 @@
 {% block card_image %}
 <div class="card-columns">
     {% for id, item in cards.items() %}
-    <a href="{{href}}{{id}}" class="custom-card {{'disabled' if not item['enabled'] }}">
+    <a href="{{href}}{{id}}" class="custom-card {{'disabled' if 'type' not in item }}">
         <div class="card" style="width: 13rem;">
             <img
                     class="card-img-top"
@@ -9,7 +9,7 @@
                     alt="Card"
             />
             <div class="card-footer">
-                <h5 class="card-title text-center">{{ item["label"] }}</h5>
+                <h5 class="card-title text-center">{{ item['Name'] }}</h5>
             </div>
         </div>
     </a>

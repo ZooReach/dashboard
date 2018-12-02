@@ -1,0 +1,10 @@
+{
+  "type": {
+    "spiders": {
+      "Name": "Spiders",
+      "Description": "description",
+      "image": "images/placeholder.svg",
+      "Kingdom": "kingdom"
+    }
+  }
+}

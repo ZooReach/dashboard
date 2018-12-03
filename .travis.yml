@@ -13,7 +13,7 @@ jobs:
   include:
     - stage: test
       name: Test
-      script: echo "Test passed"
+      script: "./cmd-dict.sh unittest"
     - stage: docker_hub_push
       name: Docker hub push
       script: "./cmd-dict.sh dockerHubPush"

@@ -28,7 +28,14 @@ function deploy {
 	echo "Deployed message from travis"
 }
 
+function unittest {
+    set -e
+    pip install -r requirements_test.txt
+    pytest -v
+}
+
 case "$1" in 
 	dockerHubPush) dockerHubPush ;;
 	deploy) deploy ;;
+	unittest) unittest ;;
 esac

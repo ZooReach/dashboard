@@ -15,10 +15,25 @@
 
 <hr class="header-line">
 
+{% if json_data['type'] %}
 <h3>Categories of {{json_data['Name']}}</h3>
 {% set cards=json_data['type'] if json_data['type'] else {} %}
 {% set href=base_url+'/'.join(fullpath)+'/' %}
 {% include 'common/card_image.html' %}
+
+{% elif json_data['is_species']%}
+<h3>Description of {{json_data['name']}}</h3>
+    <table border="1">
+        {%for row in json_data.keys()%}
+            {% if row != 'is_species' %}
+                <tr>
+                    <th> {{row}}</th>
+                    <td> {{json_data[row]}} </td>
+                </tr>
+            {%endif%}
+        {%endfor%}
+    </table>
+{% endif %}
 
 <hr class="header-line">
 

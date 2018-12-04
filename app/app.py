@@ -49,6 +49,18 @@ def category(filename):
     with app.open_resource(get_json_file(path[0])) as file:
         category_type = json.load(file)
 
+    json_check = category_type
+    species_str = ''
+    for idx, name in enumerate(path):
+        if 'type' in json_check:
+            json_check = json_check['type'][name]
+        else:
+            species_str = path[idx:]
+    print(species_str)
+    if species_str:
+        ckan_species_info_response = {"name":"species1","kingdom":"us"}
+        ckan_species_info_response['is_species'] = 'true'
+        return render_template('categor/category.html',json_data=ckan_species_info_response)
     return render_template('category/category.html', json_data=get_category(path, category_type), fullpath=path,
                            js_files=get_visual_files(filename), base_url=base_url)
 
@@ -57,10 +69,20 @@ def get_json_file(path):
     return 'data/' + path + '.json'
 
 
-def get_category(path, category_type):
-    json_data = category_type
+def get_category(path, json_data):
     for name in path:
         json_data = json_data['type'][name]
+        for key in json_data['type']:
+            if 'type' not in json_data['type'][key]:
+                ckan_response = {
+                    "species": {
+                        "Name": "species",
+                        "Description": "description",
+                        "Kingdom": "kingdom",
+                        "image": "images/placeholder.svg"
+                    }
+                }
+                json_data['type'][key]['type'] = ckan_response
     return json_data
 
 
@@ -79,7 +101,7 @@ def get_visual_files(filename):
 
 
 def get_base_url_for_category(request):
-    return ''.join(request.base_url.split('category')[0])+'category/'
+    return ''.join(request.base_url.split('category')[0]) + 'category/'
 
 
 if __name__ == '__main__':

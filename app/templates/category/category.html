@@ -7,7 +7,7 @@
 <br>
 <br>
 
-<h3>{{jsonData['Name']}}</h3>
+<h3>{{json_data['Name']}}</h3>
 <hr class="header-line">
 <br>
 
@@ -15,9 +15,9 @@
 
 <hr class="header-line">
 
-<h3>Categories of {{jsonData['Name']}}</h3>
-{% set cards=jsonData['type'] if jsonData['type'] else {} %}
-{% set href='/'.join(fullpath)+'/' %}
+<h3>Categories of {{json_data['Name']}}</h3>
+{% set cards=json_data['type'] if json_data['type'] else {} %}
+{% set href=base_url+'/'.join(fullpath)+'/' %}
 {% include 'common/card_image.html' %}
 
 <hr class="header-line">

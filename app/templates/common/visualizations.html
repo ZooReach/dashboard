@@ -1,6 +1,6 @@
 {% block visualization %}
 <div class="visual">
-    {% for files in jsfiles %}
+    {% for files in js_files %}
     <script src="{{ url_for('static', filename='js/visualization/'+files) }}"></script>
     {% endfor %}
 </div>

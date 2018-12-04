@@ -1,7 +1,7 @@
 {% block description_container %}
 <div class="row">
     <div class="col-md-8">
-        {% for key,value in jsonData.items() %}
+        {% for key,value in json_data.items() %}
         {% if key in ["Name","Description","Kingdom"] %}
         <div class="row">
             <div class="col-md-4">{{key}}</div>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 import json
 import os
 
@@ -20,61 +20,66 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 
-def for_each_file(data, directory, function):
+def for_each_file(data, directory, function_reference):
     if os.path.isdir(directory):
         for files in os.listdir(directory):
-            data = function(data, directory, files)
+            data = function_reference(data, directory, files)
     return data
 
 
-def update_json_from_file(jsonData, directory, files):
-    with app.open_resource(directory + '/' + files) as jsonfiles:
-        jsonData.update(json.load(jsonfiles)['type'])
-    return jsonData
+def update_json_from_file(json_data, directory, files):
+    with app.open_resource(directory + '/' + files) as json_files:
+        json_data.update(json.load(json_files)['type'])
+    return json_data
 
 
 @app.route('/')
 @app.route('/home')
 def home():
     directory = 'data'
-    jsonData = {}
-    return render_template('home/home.html', jsonData=for_each_file(jsonData, directory, update_json_from_file))
+    json_data = {}
+    return render_template('home/home.html', json_data=for_each_file(json_data, directory, update_json_from_file))
 
 
 @app.route('/category/<path:filename>')
 def category(filename):
     path = filename.split('/')
+    base_url = get_base_url_for_category(request)
 
-    with app.open_resource(getJsonFile(path[0])) as file:
-        type = json.load(file)
+    with app.open_resource(get_json_file(path[0])) as file:
+        category_type = json.load(file)
 
-    return render_template('category/category.html', jsonData=getType(path, type), fullpath=path,
-                           jsfiles=getVisualFiles(filename))
-
-
-def getJsonFile(path):
-    return ('data/' + path + '.json')
+    return render_template('category/category.html', json_data=get_category(path, category_type), fullpath=path,
+                           js_files=get_visual_files(filename), base_url=base_url)
 
 
-def getType(path, type):
-    jsonData = type
+def get_json_file(path):
+    return 'data/' + path + '.json'
+
+
+def get_category(path, category_type):
+    json_data = category_type
     for name in path:
-        jsonData = jsonData['type'][name]
-    return jsonData
+        json_data = json_data['type'][name]
+    return json_data
 
 
-def append_files(jsfiles, filename, files):
-    jsfiles.append(filename + '/' + files)
-    return jsfiles
+def append_files(js_files, filename, files):
+    js_files.append(filename + '/' + files)
+    return js_files
 
 
-def getVisualFiles(filename):
+def get_visual_files(filename):
     directory = 'static/js/visualization/' + filename
-    jsfiles = []
+    js_files = []
     if os.path.isdir(directory):
         for files in os.listdir(directory):
-            jsfiles.append(filename + '/' + files)
-    return jsfiles
+            js_files.append(filename + '/' + files)
+    return js_files
+
+
+def get_base_url_for_category(request):
+    return ''.join(request.base_url.split('category')[0])+'category/'
 
 
 if __name__ == '__main__':

@@ -57,9 +57,10 @@ def category(filename):
         else:
             species_str = path[idx:]
     if species_str:
-        ckan_species_info_response = {"name":"species1","kingdom":"us"}
+        ckan_species_info_response = {"Name": "species#", "Kingdom": "us"}
         ckan_species_info_response['is_species'] = 'true'
-        return render_template('species_detail/species_detail.html',json_data=ckan_species_info_response, fullpath=path)
+        return render_template('species_detail/species_detail.html', json_data=ckan_species_info_response,
+                               fullpath=path)
     return render_template('category/category.html', json_data=get_category(path, category_type), fullpath=path,
                            js_files=get_visual_files(filename), base_url=base_url)
 
@@ -73,15 +74,20 @@ def get_category(path, json_data):
         json_data = json_data['type'][name]
         for key in json_data['type']:
             if 'type' not in json_data['type'][key]:
-                ckan_response = {
-                    "species": {
-                        "Name": "species",
-                        "Description": "description",
-                        "Kingdom": "kingdom",
-                        "image": "images/placeholder.svg"
-                    }
+                ckan_species_list_response = {
+                    "result": [
+                        {
+                            "Name": "species1",
+                            "image": "images/placeholder.svg"
+                        },
+                        {
+                            "Name": "species2",
+                            "image": "images/placeholder.svg"
+                        }]
                 }
-                json_data['type'][key]['type'] = ckan_response
+                species_obj = {species['Name']: species for species in ckan_species_list_response['result']}
+                print(species_obj)
+                json_data['type'][key]['type'] = species_obj
     return json_data
 
 

@@ -56,7 +56,6 @@ def category(filename):
             json_check = json_check['type'][name]
         else:
             species_str = path[idx:]
-    print(species_str)
     if species_str:
         ckan_species_info_response = {"name":"species1","kingdom":"us"}
         ckan_species_info_response['is_species'] = 'true'

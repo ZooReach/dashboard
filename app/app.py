@@ -86,7 +86,6 @@ def get_category(path, json_data):
                         }]
                 }
                 species_obj = {species['Name']: species for species in ckan_species_list_response['result']}
-                print(species_obj)
                 json_data['type'][key]['type'] = species_obj
     return json_data
 

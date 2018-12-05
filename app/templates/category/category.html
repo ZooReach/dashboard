@@ -1,12 +1,10 @@
 {% extends 'common/layout.html' %}
+
 {% block container %}
-
 {% include 'common/navigator.html' %}
-
 <br>
 <br>
 <br>
-
 <h3>{{json_data['Name']}}</h3>
 <hr class="header-line">
 <br>
@@ -15,25 +13,10 @@
 
 <hr class="header-line">
 
-{% if json_data['type'] %}
 <h3>Categories of {{json_data['Name']}}</h3>
 {% set cards=json_data['type'] if json_data['type'] else {} %}
 {% set href=base_url+'/'.join(fullpath)+'/' %}
 {% include 'common/card_image.html' %}
-
-{% elif json_data['is_species']%}
-<h3>Description of {{json_data['name']}}</h3>
-    <table border="1">
-        {%for row in json_data.keys()%}
-            {% if row != 'is_species' %}
-                <tr>
-                    <th> {{row}}</th>
-                    <td> {{json_data[row]}} </td>
-                </tr>
-            {%endif%}
-        {%endfor%}
-    </table>
-{% endif %}
 
 <hr class="header-line">
 
@@ -47,7 +30,5 @@
 {% include 'common/downloadables.html' %}
 <script>
         d3.select("visual").append("svg").append("rect").attr("width",50).attr("height",200).style("fill","blue");
-
 </script>
 {% endblock container %}
-

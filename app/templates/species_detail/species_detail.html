@@ -9,16 +9,23 @@
 
 <h3>Description of {{json_data['Name']}}</h3>
 <hr class="header-line">
-<table border="1">
-    {%for row in json_data.keys()%}
-    {% if row != 'is_species' %}
-    <tr>
-        <th> {{row}}</th>
-        <td> {{json_data[row]}}</td>
-    </tr>
-    {% endif %}
-    {% endfor %}
-</table>
+<div class="container">
+    <div class="row">
+        {%for row in json_data.keys()%}
+        {% if row != 'is_species' %}
+        <div class="col-md"> {{row}}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {%for row in json_data.keys()%}
+        {% if row != 'is_species' %}
+        <div class="col-md"> {{json_data[row]}}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
 
 <hr class="header-line">
 
@@ -34,4 +41,3 @@
         d3.select("visual").append("svg").append("rect").attr("width",50).attr("height",200).style("fill","blue");
 </script>
 {% endblock container %}
-

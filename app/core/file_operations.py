@@ -1,4 +1,5 @@
 import os
+import json
 
 
 def for_each_file(data, directory, function_reference):
@@ -8,8 +9,8 @@ def for_each_file(data, directory, function_reference):
     return data
 
 
-def get_json_file(path):
-    return 'data/' + path + '.json'
+def get_json_file_path_from_data(root_category):
+    return 'data/' + root_category + '.json'
 
 
 def append_files(js_files, filename, files):
@@ -24,3 +25,8 @@ def get_visual_files(filename):
         for files in os.listdir(directory):
             js_files.append(filename + '/' + files)
     return js_files
+
+
+def get_json_file(path):
+    with open(path) as file:
+        return json.load(file)

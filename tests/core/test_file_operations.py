@@ -1,6 +1,5 @@
-from app.core import file_operations as file
 import unittest
-
+from app.core import file_operations as file
 
 class AppTestCase(unittest.TestCase):
 

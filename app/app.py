@@ -59,7 +59,7 @@ def category(filename):
     if species_str:
         ckan_species_info_response = {"name":"species1","kingdom":"us"}
         ckan_species_info_response['is_species'] = 'true'
-        return render_template('categor/category.html',json_data=ckan_species_info_response)
+        return render_template('species_detail/species_detail.html',json_data=ckan_species_info_response, fullpath=path)
     return render_template('category/category.html', json_data=get_category(path, category_type), fullpath=path,
                            js_files=get_visual_files(filename), base_url=base_url)
 

@@ -12,6 +12,5 @@ class FileOperationTestCase(unittest.TestCase):
         self.assertEqual(file.append_files([], "filename", "files"), ['filename/files'])
         self.assertEqual(file.append_files(["file1"], "file2", "file"), ['file1', 'file2/file'])
 
-
     def test_client(self):
         self.assertEqual(file.get_json_file_path_from_data('path'), 'data/path.json')

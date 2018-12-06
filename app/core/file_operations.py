@@ -2,7 +2,8 @@ import os
 import json
 import functools
 
-def for_each_file(data, directory, function_reference):
+
+def list_dir(directory):
     if os.path.isdir(directory):
         return os.listdir(directory)
     return []

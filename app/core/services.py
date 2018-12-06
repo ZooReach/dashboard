@@ -1,7 +1,8 @@
 from flask import render_template, request
 from app.utils.extract_value import get_base_url_till_given_string
 from app.core.category import get_category
-from app.core.file_operations import for_each_file, get_visual_files, get_json_file_path_from_data, get_json_file
+from app.core.file_operations import get_visual_files, get_json_file_path_from_data, get_json_file, \
+    home_page_category_data
 
 
 def render_home():
@@ -18,7 +19,8 @@ def render_category(filename):
     if species_str:
         return render_species_details(category_path)
 
-    return render_template('category/category.html', json_data=get_category(category_path, category_type), fullpath=category_path,
+    return render_template('category/category.html', json_data=get_category(category_path, category_type),
+                           fullpath=category_path,
                            js_files=get_visual_files(filename), base_url=base_url)
 
 

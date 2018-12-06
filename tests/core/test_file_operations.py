@@ -1,11 +1,12 @@
-import unittest
+import os
+from unittest import TestCase
 from mock import patch
 from app.core import file_operations as file
 
 
-class FileOperationTestCase(unittest.TestCase):
+class FileOperationTestCase(TestCase):
 
-    def test_get_json_file(self):
+    def test_get_json_file_path_from_data(self):
         self.assertEqual(file.get_json_file_path_from_data('path'), 'data/path.json')
         self.assertEqual(file.get_json_file_path_from_data('append'), 'data/append.json')
 
@@ -24,7 +25,7 @@ class FileOperationTestCase(unittest.TestCase):
         self.assertEqual(file.list_dir("directory"), [])
 
     @patch("app.core.file_operations.list_dir")
-    def test_hello(self, list_dir):
+    def test_get_visual_files(self, list_dir):
         list_dir.return_value = ["dir1", "dir2", "dir3"]
         self.assertEqual(file.get_visual_files("filename"), ["filename/dir1", "filename/dir2", "filename/dir3"])
 

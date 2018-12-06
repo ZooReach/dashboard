@@ -5,9 +5,7 @@ from app.core.file_operations import for_each_file, get_visual_files, get_json_f
 
 
 def render_home():
-    directory = 'data'
-    json_data = {}
-    return render_template('home/home.html', json_data=for_each_file(json_data, directory, update_json_from_file))
+    return render_template('home/home.html', json_data=home_page_category_data())
 
 
 def render_category(filename):
@@ -39,9 +37,3 @@ def get_species_from_path(category_type, path):
         else:
             species_str = path[idx:]
     return species_str
-
-
-def update_json_from_file(json_data, directory, files):
-    json_file = get_json_file(directory + '/' + files)
-    json_data.update(json_file['type'])
-    return json_data

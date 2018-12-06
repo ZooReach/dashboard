@@ -41,3 +41,8 @@ class ServicesTestCase(TestCase):
         get_species_from_path.return_value = ''
         render_template.return_value = 'success'
         self.assertEqual(services.render_category(filename), 'success')
+
+    @patch("app.core.services.render_template")
+    def test_render_home(self, render_template):
+        render_template.return_value = 'success'
+        self.assertEqual(services.render_home(), 'success')

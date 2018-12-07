@@ -1,7 +1,7 @@
 from flask import render_template, request
-from utils.extract_value import get_base_url_till_given_string
-from core.category import get_category
-from core.file_operations import get_visual_files, get_json_file_path_from_data, get_json_file, \
+from ..utils.extract_value import get_base_url_till_given_string
+from .category import get_category
+from .file_operations import get_visual_files, get_json_file_path_from_data, get_json_file, \
     home_page_category_data
 
 

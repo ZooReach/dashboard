@@ -1,6 +1,5 @@
-import os
-from flask import Flask, url_for
-from core.services import render_home, render_category
+from flask import Flask
+from .core.services import render_home, render_category
 
 app = Flask(__name__)
 

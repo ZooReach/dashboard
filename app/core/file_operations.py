@@ -2,7 +2,9 @@ import os
 import json
 import functools
 
-os_directory = os.path.dirname(os.path.dirname(__file__))
+
+def get_os_directory():
+    return os.path.dirname(os.path.dirname(__file__))
 
 
 def list_dir(directory):
@@ -12,17 +14,12 @@ def list_dir(directory):
 
 
 def get_visual_files(filename):
-    directory = os.path.join(os_directory, 'static', 'js', 'visualization', filename)
-    return list(map(lambda files: os.path.join(os_directory, filename, files), list_dir(directory)))
+    directory = os.path.join(get_os_directory(), 'static', 'js', 'visualization', filename)
+    return list(map(lambda files: os.path.join(get_os_directory(), filename, files), list_dir(directory)))
 
 
 def get_json_file_path_from_data(root_category):
-    return os.path.join(os_directory, 'data', "".join([root_category, '.json']))
-
-
-def append_files(js_files, filename, files):
-    js_files.append(os.path.join(os_directory, filename, files))
-    return js_files
+    return os.path.join(get_os_directory(), 'data', "".join([root_category, '.json']))
 
 
 def get_json_file(path):
@@ -41,5 +38,5 @@ def update_json_from_file(json_data, directory, files):
 
 
 def home_page_category_data():
-    directory = os.path.join(os_directory, "data")
+    directory = os.path.join(get_os_directory(), "data")
     return functools.reduce(lambda data, files: update_json_from_file(data, directory, files), list_dir(directory), {})

@@ -39,5 +39,5 @@ def update_json_from_file(json_data, directory, files):
 
 
 def home_page_category_data():
-    directory = "data"
+    directory = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     return functools.reduce(lambda data, files: update_json_from_file(data, directory, files), list_dir(directory), {})

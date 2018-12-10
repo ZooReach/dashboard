@@ -3,33 +3,21 @@
     <div class="sub-title text-center">Downloadable Formats</div>
     <div class="container">
         <div class="row">
-            {% if 'csv' in formats%}
-            <div class="col text-center">
-                <div><i class="fas fa-file-csv download-icon"></i></div>
-                <div class="download-text">Machine Readable Datasets</div>
-            </div>
+            {% set format_dict={'csv':'Machine Readable Datasets', 'excel':'Excel Sheets', 'pdf':'Reports (PDF)',
+            'pie':'Data Visualization'} %}
+            {% set visual_dict={'csv':'fa-file-csv', 'excel':'fa-file-excel', 'pdf':'fa-file-pdf',
+            'pie':'fa-chart-pie'} %}
+            {% for name in formats %}
+            {% if loop.index!=1 %}
             <div class="seperator"></div>
             {% endif %}
-            {% if 'excel' in formats%}
             <div class="col text-center">
-                <div><i class="fas fa-file-excel download-icon"></i></div>
-                <div class="download-text">Excel Sheets</div>
+                <a href="http://139.59.64.25:5000/">
+                    <div><i class="fas {{visual_dict[name]}} download-icon"></i></div>
+                    <div class="download-text">{{format_dict[name]}}</div>
+                </a>
             </div>
-            <div class="seperator"></div>
-            {% endif %}
-            {% if 'pdf' in formats%}
-            <div class="col text-center">
-                <div><i class="fas fa-file-pdf download-icon"></i></div>
-                <div class="download-text">Reports (PDF)</div>
-            </div>
-            <div class="seperator"></div>
-            {% endif %}
-            {% if 'visual' in formats%}
-            <div class="col text-center">
-                <div><i class="fas fa-chart-pie download-icon"></i></div>
-                <div class="download-text">Data Visualization</div>
-            </div>
-            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>

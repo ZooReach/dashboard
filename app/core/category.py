@@ -6,7 +6,7 @@ def get_category(path, json_data):
                 ckan_species_list_response = {
                     "result": [
                         {
-                            "Name": "species1",
+                            "Name": "ambassis",
                             "image": "images/placeholder.svg"
                         },
                         {

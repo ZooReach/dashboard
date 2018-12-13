@@ -33,7 +33,7 @@ class FileOperationTestCase(TestCase):
         list_dir.return_value = ["dir1", "dir2", "dir3"]
         os_dir.return_value = "dir"
         self.assertEqual(file.get_visual_files("filename"),
-                         ["dir/filename/dir1", "dir/filename/dir2", "dir/filename/dir3"])
+                         ["js/visualization/filename/dir1", "js/visualization/filename/dir2", "js/visualization/filename/dir3"])
 
     @patch("json.load")
     def test_update_json(self, json_load):

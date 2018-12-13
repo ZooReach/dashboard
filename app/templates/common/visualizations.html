@@ -2,7 +2,7 @@
 
 <div class="visual">
     {% for files in js_files %}
-    <script src="{{ url_for('static', filename='js/visualization/'+files) }}"></script>
+    <script src="{{ url_for('static', filename=files }}"></script>
     {% endfor %}
 </div>
 

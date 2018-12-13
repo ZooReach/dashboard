@@ -21,10 +21,12 @@ class ServicesTestCase(TestCase):
         species = ['species']
         self.assertEqual(services.get_species_from_path(category_type, path), species)
 
+    @patch("app.core.services.get")
     @patch("app.core.services.render_template")
-    def test_render_species_details(self, render_template):
+    def test_render_species_details(self, render_template, get):
         render_template.return_value = 'success'
-        path = []
+        get.return_value = {'result':{'records':[{'phylum':'phylumdata','class':'classdata','family':'familydata','redlist_category':'redlist_category'}]}}
+        path = ['bats', 'anamalia']
         self.assertEqual(services.render_species_details(path), 'success')
 
     @patch("app.core.services.render_template")

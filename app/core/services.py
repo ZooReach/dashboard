@@ -39,8 +39,8 @@ def render_species_details(path):
                            fullpath=path)
 
 
-def _get_filtered_details(species_record,keys):
-    species_display_info = {}
-    for key in keys:
-        species_display_info[key] = species_record[key]
+def _get_filtered_details(species_record, keys):
+    available_data = species_record.keys()
+    species_display_info = {display_key: (species_record[display_key] if display_key in available_data else '')
+                            for display_key in keys}
     return species_display_info

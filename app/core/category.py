@@ -1,25 +1,37 @@
 from app.core.file_operations import get_json_file, get_json_file_path_from_data
+from ..utils.rest_client import get
+from ..utils.constants import api
+import json
 
 
 def get_category(path, json_data):
+    print(path)
     for name in path:
         json_data = json_data['type'][name]
         for key in json_data['type']:
             if 'type' not in json_data['type'][key]:
-                ckan_species_list_response = {
-                    "result": [
-                        {
-                            "Name": "ambassis",
-                            "image": "images/placeholder.svg"
-                        },
-                        {
-                            "Name": "species2",
-                            "image": "images/placeholder.svg"
-                        }]
-                }
-                species_obj = {species['Name']: species for species in ckan_species_list_response['result']}
+                ckan_species_list_response = _get_species_list(path)
+                print(ckan_species_list_response)
+                species_obj = {species['species']: species for species in ckan_species_list_response}
                 json_data['type'][key]['type'] = species_obj
     return json_data
+
+
+def _get_species_list(path):
+    url = api['datastore_search']
+    resource_id = get_resource_id(path)
+    category_list = _get_category_list(path)
+    query_params = {'resource_id': resource_id, 'filters': category_list, 'limit': '1'}
+    response = get(url=url, queryparams=query_params)
+    return response['result']['records']
+
+
+def _get_category_list(path):
+    category_list = {}
+    for index, category in enumerate(path[1:]):
+        category_index = 'category_level'+str(index+1)
+        category_list[category_index] = category
+        return json.dumps(category_list)
 
 
 def get_species_from_path(category_type, path):

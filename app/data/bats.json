@@ -19,13 +19,13 @@
               "image": "images/placeholder.svg"
             },
             "medium": {
-              "Name": "fruit bats",
+              "Name": "medium",
               "Description": "description",
               "Kingdom": "kingdom",
               "image": "images/placeholder.svg"
             },
             "small": {
-              "Name": "fruit bats",
+              "Name": "small",
               "Description": "description",
               "Kingdom": "kingdom",
               "image": "images/placeholder.svg"

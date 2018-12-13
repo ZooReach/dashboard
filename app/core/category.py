@@ -11,7 +11,6 @@ def get_category(path, json_data):
         for key in json_data['type']:
             if 'type' not in json_data['type'][key]:
                 ckan_species_list_response = _get_species_list(path)
-                print(ckan_species_list_response)
                 species_obj = {species['species']: species for species in ckan_species_list_response}
                 json_data['type'][key]['type'] = species_obj
     return json_data
@@ -21,7 +20,7 @@ def _get_species_list(path):
     url = api['datastore_search']
     resource_id = get_resource_id(path)
     category_list = _get_category_list(path)
-    query_params = {'resource_id': resource_id, 'filters': category_list, 'limit': '1'}
+    query_params = {'resource_id': resource_id, 'filters': category_list}
     response = get(url=url, queryparams=query_params)
     return response['result']['records']
 

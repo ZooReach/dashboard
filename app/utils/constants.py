@@ -1,5 +1,5 @@
 environment_details = {
-    'ckan': 'http://139.59.66.4:5000'
+    'ckan': 'http://139.59.66.4'
 }
 
 api = {

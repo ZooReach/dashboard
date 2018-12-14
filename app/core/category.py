@@ -26,7 +26,7 @@ def get_species_list(path):
     url = api['datastore_search']
     resource_id = get_resource_id(path)
     category_list = get_category_list(path)
-    query_params = {'resource_id': resource_id, 'filters': category_list, 'limit': '1'}
+    query_params = {'resource_id': resource_id, 'filters': category_list, 'limit': '20'}
     response = get(url=url, queryparams=query_params)
     ckan_species_list_response = response['result']['records']
     species_obj = {species['species']: {"Name": species['species'], "type": {}, "Kingdom": species['kingdom'],
@@ -38,9 +38,9 @@ def get_species_list(path):
 def get_category_list(path):
     category_list = {}
     for index, category in enumerate(path[1:]):
-        category_index = 'category_level' + str(index + 1)
+        category_index = 'category_level' + str(index+1)
         category_list[category_index] = category
-        return json.dumps(category_list)
+    return json.dumps(category_list)
 
 
 def get_species_from_path(category_type, path):

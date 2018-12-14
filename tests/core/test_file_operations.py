@@ -1,4 +1,3 @@
-import os
 from unittest import TestCase
 from mock import patch
 from app.core import file_operations as file

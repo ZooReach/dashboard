@@ -5,22 +5,6 @@ from mock import patch
 
 class ServicesTestCase(TestCase):
 
-    def test_get_species_from_path_with_type(self):
-        category_type = {
-            "type": {
-                "category1": {
-                    "type": {}}}}
-        path = ['category1']
-        self.assertEqual(services.get_species_from_path(category_type, path), '')
-
-    def test_get_species_from_path_without_type(self):
-        category_type = {
-            "type": {
-                "category1": {}}}
-        path = ['category1', 'species']
-        species = ['species']
-        self.assertEqual(services.get_species_from_path(category_type, path), species)
-
     @patch("app.core.services.get")
     @patch("app.core.services.render_template")
     def test_render_species_details(self, render_template, get):

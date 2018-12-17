@@ -48,3 +48,16 @@ class ServicesTestCase(TestCase):
     def test_get_array_from_string_path(self):
         self.assertEqual(services.get_array_from_string_path('aaa/bbb/ccc'), ['aaa', 'bbb', 'ccc'])
         self.assertEqual(services.get_array_from_string_path('aaa'), ['aaa'])
+
+
+    @patch("app.core.services.import_module")
+    @patch("app.core.services.get_array_from_string_path")
+    def test_get_json(self,get_array_from_string_path,import_module):
+        class SampleMockTest(object):
+            def main(self):
+                return 'hello'
+        get_array_from_string_path.return_value = ['data','bats.js']
+        import_module.return_value = SampleMockTest()
+        import_module.main.return_value = 'hello'
+        self.assertEqual(services.get_json('bats'),'hello')
+

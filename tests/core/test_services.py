@@ -1,11 +1,6 @@
 from unittest import TestCase
 from app.core import services
 from mock import patch, MagicMock, Mock
-from importlib import import_module
-
-
-# import sys
-# sys.modules['B'] = __import__('import_module')
 
 
 class ServicesTestCase(TestCase):

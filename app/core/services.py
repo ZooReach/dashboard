@@ -61,4 +61,4 @@ def get_array_from_string_path(path):
 def get_json(filename):
     category_path = get_array_from_string_path(path=filename)
     my_module = import_module('.' + '.'.join(category_path), package='apis')
-    return "hello"
+    return my_module.main()

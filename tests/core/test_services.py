@@ -1,5 +1,6 @@
 from unittest import TestCase
 from app.core import services
+import json
 from mock import patch, MagicMock, Mock
 
 
@@ -37,9 +38,9 @@ class ServicesTestCase(TestCase):
 
     def test_form_query_params(self):
         self.assertEqual(services.form_query_params("resource_id_one", "species_one"),
-                         {'resource_id': "resource_id_one", 'filters': {'species': "species_one"}, 'limit': 10})
+                         {'resource_id': "resource_id_one", 'filters': json.dumps({'species': 'species_one'}), 'limit': 10})
         self.assertEqual(services.form_query_params("resource_id_one", "species_one", 1),
-                         {'resource_id': "resource_id_one", 'filters': {'species': "species_one"}, 'limit': 1})
+                         {'resource_id': "resource_id_one", 'filters': json.dumps({'species': "species_one"}), 'limit': 1})
 
     def test_get_species_name(self):
         self.assertEqual(services.get_species_name(['array1', 'array2', 'array3']), 'array3')

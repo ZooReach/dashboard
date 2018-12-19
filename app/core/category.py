@@ -1,8 +1,8 @@
 from app.core.file_operations import get_json_file, get_json_file_path_from_data
 from ..utils.rest_client import get
 from ..utils.constants import api
-import json
 import functools
+import json
 
 
 def get_category(path, json_data):

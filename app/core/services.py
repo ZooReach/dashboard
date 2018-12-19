@@ -6,6 +6,7 @@ from .category import get_category, get_resource_id, get_species_from_path
 from .file_operations import get_visual_files, get_json_file_path_from_data, get_json_file, \
     home_page_category_data
 from importlib import import_module
+import json
 
 
 def render_home():
@@ -47,7 +48,8 @@ def _get_filtered_details(species_record, keys):
 
 
 def form_query_params(resource_id, species_name, limit=10):
-    return {'resource_id': resource_id, 'filters': {'species': species_name}, 'limit': limit}
+    filter_condition = json.dumps({'species': species_name})
+    return {'resource_id': resource_id, 'filters': filter_condition, 'limit': limit}
 
 
 def get_species_name(category_path):

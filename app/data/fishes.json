@@ -75,7 +75,7 @@
            },
            "Carps Minnows": {
              "Name": "Carps Minnows",
-             "image": "images/placeholder.svg",
+             "image": "images/carp.jpg",
               "type": {
                 "Carps & Truw Minnow": {
                   "Name": "Carps & Truw Minnow",
@@ -131,7 +131,7 @@
               "type": {
                 "Snakehead": {
                   "Name": "Snakehead",
-                  "image": "images/placeholder.svg"
+                  "image": "images/snakehead.jpg"
                 }
               }
            },

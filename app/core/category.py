@@ -6,7 +6,6 @@ import functools
 
 def get_category(path, json_data):
     categories_json = get_categories_json(path, json_data)
-
     if 'type' in categories_json.keys():
         for key in categories_json['type']:
             if 'type' not in categories_json['type'][key]:

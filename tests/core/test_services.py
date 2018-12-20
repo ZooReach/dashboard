@@ -1,7 +1,7 @@
 from unittest import TestCase
 from app.core import services
 import json
-from mock import patch, MagicMock, Mock
+from mock import patch, Mock
 
 
 class ServicesTestCase(TestCase):

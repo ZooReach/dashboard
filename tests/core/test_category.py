@@ -1,6 +1,6 @@
 from unittest import TestCase
 from app.core import category
-
+from mock import patch, Mock
 
 class CategoryTestCase(TestCase):
     def test_get_categories_json(self):
@@ -39,3 +39,23 @@ class CategoryTestCase(TestCase):
     def test_frame_select_query_to_list_species_without_filter_query(self):
         expected = 'SELECT species,kingdom from "1234"'
         self.assertEqual(category.frame_select_query_to_list_species('1234',''),expected)
+
+    @patch("app.core.category.get_categories_json")
+    def test_get_category(self,get_categories_json):
+        json_data = {'Name':'Fish','type':{'Eels' : {'type':{ 'Eels1':{'Name':'Eels1'}}
+            ,'Eels2':{'Name':'Eels2'}}}}
+        get_categories_json.return_value = json_data
+        path=['category','fish','Eels']
+        self.assertEqual(category.get_category(path,json_data),json_data)
+
+    @patch("app.core.category.get_species_list")
+    @patch("app.core.category.get_categories_json")
+    def test_get_category(self,get_categories_json,get_species_list):
+        json_data = {'Name':'Eels', 'type':{ 'Eels1':{'Name':'Eels'}}}
+        species = {"pop fish":{"Name":"pop fish"}}
+        get_categories_json.return_value = json_data
+        get_species_list.return_value = species
+        path=['fishes','Eels']
+        result = {'Name':'Eels', 'type':{ 'Eels1':{'Name':'Eels','type':species}}}
+        result_actual = category.get_category(path,json_data)
+        self.assertEqual(result_actual,result)

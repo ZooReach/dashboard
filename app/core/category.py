@@ -11,7 +11,11 @@ def get_category(path, json_data):
     if 'type' in categories_json.keys():
         for key in categories_json['type']:
             if 'type' not in categories_json['type'][key]:
-                categories_json['type'][key]['type'] = get_species_list(path)
+                path_with_category_level_2 = path[:]
+                path_with_category_level_2.append(key) #adding category level 2 to get specific resul of it
+                species_list = get_species_list(path_with_category_level_2)
+                if bool(species_list):
+                    categories_json['type'][key]['type'] = species_list
     else:
         categories_json['type'] = get_species_list(path)
 

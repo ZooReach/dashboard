@@ -1,6 +1,7 @@
 from app.core.file_operations import get_json_file, get_json_file_path_from_data
 from ..utils.rest_client import get
 from ..utils.constants import api
+from ..exception.invalid_input_exception import InvalidInput
 import functools
 
 
@@ -66,5 +67,8 @@ def get_species_from_path(category_type, path):
 
 
 def get_resource_id(category_path):
-    category_type = get_json_file(get_json_file_path_from_data(category_path[0]))
-    return category_type['type'][category_path[0]]['resource_id']
+    try:
+        category_type = get_json_file(get_json_file_path_from_data(category_path[0]))
+        return category_type['type'][category_path[0]]['resource_id']
+    except Exception:
+        raise InvalidInput("Resouce id is missing in data input file")

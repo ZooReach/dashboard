@@ -64,3 +64,9 @@ def get_json(filename):
     category_path = get_array_from_string_path(path=filename)
     my_module = import_module('.' + '.'.join(category_path), package='apis')
     return my_module.main()
+
+
+def raise_exception(e):
+    return render_template('common/custom_error_view.html', message=e.description,base_url=get_base_url_till_given_string(request, 'category')), 500
+
+

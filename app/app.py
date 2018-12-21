@@ -1,5 +1,5 @@
 from flask import Flask
-from .core.services import render_home, render_category, get_json
+from .core.services import render_home, render_category, get_json, raise_exception
 
 app = Flask(__name__)
 
@@ -19,6 +19,10 @@ def category(filename):
 def api(filename):
     return get_json(filename)
 
+
+@app.errorhandler(500)
+def service_exception(e):
+    return raise_exception(e)
 
 if __name__ == '__main__':
     app.run()

@@ -5,7 +5,7 @@
       "Description": "description",
       "image": "images/placeholder.svg",
       "Kingdom": "kingdom",
-      "resource_id": "d2334ebf-5f4b-4f38-b383-c7a75396ac0e"
+      "resource_id": "d2334ebf-5f4b-4f38-b383-c7a75396ac0e",
       "type": {
         "Rat": {
           "Name": "Rat",

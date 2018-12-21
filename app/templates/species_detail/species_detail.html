@@ -13,7 +13,7 @@
     <div class="row">
         {%for row in json_data.keys()%}
         {% if row != 'is_species' %}
-        <div class="col-md"> {{row}}</div>
+        <div class="col-md"> <b> {{row}} </b> </div>
         {% endif %}
         {% endfor %}
     </div>

@@ -5,30 +5,76 @@
       "Description": "description",
       "image": "images/placeholder.svg",
       "Kingdom": "kingdom",
+      "resource_id": "0f075355-91bb-47d1-acab-998fe5a5d1ca",
       "type": {
-        "lorises": {
+        "Loris": {
           "Name": "Lorises",
           "Description": "description",
           "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
+          "image": "images/placeholder.svg",
+          "type" : {
+            "Slender Loris": {
+              "Name": "Slender Loris",
+                "Description": "description",
+                "Kingdom": "kingdom",
+                "image": "images/placeholder.svg"
+            },
+            "Slow Loris":{
+              "Name": "Slow Loris",
+              "Description": "description",
+              "Kingdom": "kingdom",
+              "image": "images/placeholder.svg"
+            }
+
+          }
         },
-        "macaques": {
+        "Langurs": {
           "Name": "Macaques",
           "Description": "description",
           "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
+          "image": "images/placeholder.svg",
+          "type": {
+            "Sacred Langurs": {
+              "Name": "Sacred Langurs",
+              "Description": "description",
+              "Kingdom": "kingdom",
+              "image": "images/placeholder.svg"
+            },
+            "Leaf-eating Langurs": {
+              "Name":"Leaf-eating Langurs",
+               "Description": "description",
+              "Kingdom": "kingdom",
+              "image": "images/placeholder.svg"
+            }
+          }
         },
-        "langurs": {
+        "Macaques": {
           "Name": "Langurs",
           "Description": "description",
           "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
+          "image": "images/placeholder.svg",
+          "type": {
+            "Macaques":{
+              "Name": "Macaques",
+              "Description": "description",
+              "Kingdom": "kingdom",
+              "image": "images/placeholder.svg"
+            }
+          }
         },
-        "gibbons": {
+        "Gibbons": {
           "Name": "Gibbons",
           "Description": "description",
           "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
+          "image": "images/placeholder.svg",
+          "type": {
+            "Gibbons": {
+              "Name": "Gibbons",
+              "Description": "description",
+              "Kingdom": "kingdom",
+              "image": "images/placeholder.svg"
+            }
+          }
         }
       }
     }

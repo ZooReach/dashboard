@@ -4,21 +4,7 @@
       "Name": "Orchids",
       "Description": "description",
       "image": "images/placeholder.svg",
-      "Kingdom": "kingdom",
-      "type": {
-        "ground_orchid": {
-          "Name": "Ground Orchid",
-          "Description": "description",
-          "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
-        },
-        "tree_orchid": {
-          "Name": "Tree Orchid",
-          "Description": "description",
-          "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
-        }
-      }
+      "Kingdom": "kingdom"
     }
   }
 }

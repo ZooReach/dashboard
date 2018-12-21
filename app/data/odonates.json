@@ -4,21 +4,7 @@
       "Name": "Odonates",
       "Description": "description",
       "image": "images/placeholder.svg",
-      "Kingdom": "kingdom",
-      "type": {
-        "dragonflies": {
-          "Name": "Dragonflies",
-          "Description": "description",
-          "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
-        },
-        "damselflies": {
-          "Name": "Damselflies",
-          "Description": "description",
-          "Kingdom": "kingdom",
-          "image": "images/placeholder.svg"
-        }
-      }
+      "Kingdom": "kingdom"
     }
   }
 }

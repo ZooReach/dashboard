@@ -1,9 +1,13 @@
 {% block visualization %}
+<div class="visualization">
+        <div class="container-fluid body-content">
+            {% for files in js_files %}
+                <script src="{{ url_for('static', filename=files) }}"></script>
+            {% endfor %}
+        </div>
+        <div id="visual_description" class="description">
+        </div>
 
-<div class="visual">
-    {% for files in js_files %}
-    <script src="{{ url_for('static', filename=files) }}"></script>
-    {% endfor %}
 </div>
 
 {% endblock visualization %}

@@ -4,8 +4,8 @@ from mock import patch, Mock
 
 class CategoryTestCase(TestCase):
     def test_get_categories_json(self):
-        path = ['bats', 'fruit']
-        json_data = {'type': {'bats': {'type': {'fruit': {'name': 'hello'}}}}}
+        path = ['fishes', 'fruit']
+        json_data = {'type': {'fishes': {'type': {'fruit': {'name': 'hello'}}}}}
         actual = category.get_categories_json(path, json_data)
         self.assertEqual(actual, {'name': 'hello'})
 
@@ -26,7 +26,7 @@ class CategoryTestCase(TestCase):
         self.assertEqual(category.get_species_from_path(category_type, path), species)
 
     def test_get_category_list_sql_condition(self):
-        path = ['bats','fruit_eating','large']
+        path = ['fishes','fruit_eating','large']
         expected = "category_level1='fruit_eating' AND category_level2='large'"
         self.assertEqual(category.get_category_list_sql_condition(path),expected)
 

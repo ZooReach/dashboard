@@ -13,7 +13,7 @@ class ServicesTestCase(TestCase):
         get.return_value = {'result': {'records': [
             {'phylum': 'phylumdata', 'class': 'classdata', 'family': 'familydata',
              'redlist_category': 'redlist_category'}]}}
-        path = ['bats', 'anamalia']
+        path = ['fishes', 'anamalia']
         self.assertEqual(services.render_species_details(path), 'success')
 
     @patch("app.core.services.render_template")
@@ -57,8 +57,8 @@ class ServicesTestCase(TestCase):
         class SampleMockTest(object):
             def main(self):
                 return 'hello'
-        get_array_from_string_path.return_value = ['data','bats.js']
+        get_array_from_string_path.return_value = ['data','fishes.js']
         import_module.return_value = SampleMockTest()
         import_module.main.return_value = 'hello'
-        self.assertEqual(services.get_json('bats'),'hello')
+        self.assertEqual(services.get_json('fishes'),'hello')
 

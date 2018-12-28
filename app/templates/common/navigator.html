@@ -1,7 +1,10 @@
 {% block navigator %}
+<div class="topnav">
 <a href="/"> Home</a>
 {% for name in fullpath %}
 {% set href = '/'.join(fullpath).split(name,2)[0]+name %}
-> <a href="/category/{{href}}">{{name}}</a>
+<a href="/category/{{href}}">{{name}}</a>
 {% endfor %}
+</div>
+
 {% endblock navigator %}

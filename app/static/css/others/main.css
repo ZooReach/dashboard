@@ -93,30 +93,79 @@ hr.header-line{
  width: 100%;
 }
 
-.topnav {
-  background-color: #333;
-  overflow: hidden;
+.wrapper{
+  padding-top: 0.5rem;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+
+.a {
   text-decoration: none;
-  font-size: 17px;
+  display: inline;
+  color: #3FABBA;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+
+.topnav {
+  position: relative;
+
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
+.topnav p {
+  position: relative;
+  display: inline;
+  float: left;
+}
+
+.topnav p a{
+  display: block;
+  padding: 0 10px 0 30px;
+  line-height: 40px;
+  color: #fff;
+  background: #C0C0C0;
+}
+
+.topnav p:first-child a {
+  padding: 0 10px 0 20px;  
+}
+
+.topnav p:activePage a{
+  background: #333;
+}
+
+.topnav p:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -20px;
+  display: block;
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #C0C0C0;
+  z-index: 10;
+}
+
+.topnav p.activePage:after{
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #333;
+}
+
+/* GIVE EVERY CHILD A DIFFERENT COLOR */
+.topnav p:nth-child(even) a{
+  background: #696969;
+}
+
+.topnav p:nth-child(even):after{
+  border-left: 20px solid #696969;
+}
+
+.topnav p:nth-child(odd) a{
+  background: #808080;
+}
+
+.topnav p:nth-child(odd):after{
+  border-left: 20px solid #808080;
 }
 

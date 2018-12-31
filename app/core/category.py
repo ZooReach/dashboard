@@ -33,7 +33,7 @@ def get_species_list(path):
     query_param = {"sql": query}
     response = get(url=url, queryparams=query_param)
     ckan_species_list_response = response['result']['records']
-    species_obj = {species['species']: {"Name": species['species'], "type": {}, "Kingdom": species['kingdom'],
+    species_obj = {species['species']: {"Name": species['species'], "Genus":species['genus'],"type": {}, "Kingdom": species['kingdom'],
                                         "image": "images/placeholder.svg"}
                    for species in ckan_species_list_response}
     return species_obj
@@ -50,7 +50,7 @@ def get_category_list_sql_condition(path):
 
 
 def frame_select_query_to_list_species(resource_id,filter_condition):
-    query = 'SELECT species,kingdom from "' + resource_id+'"'
+    query = 'SELECT species,kingdom,genus from "' + resource_id+'"'
     if filter_condition is not '':
         query = query + ' WHERE ' + filter_condition
     return query

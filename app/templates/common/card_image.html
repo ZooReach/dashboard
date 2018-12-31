@@ -10,7 +10,12 @@
                     alt="Card"
             />
             <div class="card-footer">
-                <h5 class="card-title text-center">{{ item['Name'] }}</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center">{{item['Name'] }}</li>
+                    {% if item['Genus'] %}
+                    <li class="list-group-item text-center">{{item['Genus']}}</li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </a>

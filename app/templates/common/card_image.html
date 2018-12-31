@@ -1,11 +1,12 @@
 {% block card_image %}
 <div class="card-columns">
+    {% set baseurl = ''.join([request.base_url.split("category")[0],"static/"]) %}
     {% for id, item in cards.items() %}
     <a href="{{href}}{{id}}" class="custom-card {{'disabled' if 'type' not in item }}">
         <div class="card" style="width: 13rem;">
             <img
-                    class="card-img-top"
-                    src="{{url_for('static', filename=item['image'])}}"
+                    class="card-img-top lazy"
+                    data-src="{{ baseurl+item['image'] }}"
                     alt="Card"
             />
             <div class="card-footer">

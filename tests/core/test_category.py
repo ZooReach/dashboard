@@ -33,11 +33,11 @@ class CategoryTestCase(TestCase):
 
     def test_frame_select_query_to_list_species_with_filter_query(self):
         filter_query = "category_level1='fruit_eating' AND category_level2='large'"
-        expected = 'SELECT species,kingdom from "1234" WHERE '+filter_query
+        expected = 'SELECT species,kingdom,genus from "1234" WHERE '+filter_query
         self.assertEqual(category.frame_select_query_to_list_species('1234',filter_query),expected)
 
     def test_frame_select_query_to_list_species_without_filter_query(self):
-        expected = 'SELECT species,kingdom from "1234"'
+        expected = 'SELECT species,kingdom,genus from "1234"'
         self.assertEqual(category.frame_select_query_to_list_species('1234',''),expected)
 
     @patch("app.core.category.get_categories_json")

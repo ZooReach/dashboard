@@ -169,3 +169,6 @@ hr.header-line{
   border-left: 20px solid #808080;
 }
 
+.card-footer{
+    font-size: 14px;
+}

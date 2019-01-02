@@ -9,13 +9,12 @@
                     data-src="{{ baseurl+item['image'] }}"
                     alt="Card"
             />
-            <div class="card-footer">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">{{item['Name'] }}</li>
+            <div class="card-footer text-center">
                     {% if item['Genus'] %}
-                    <li class="list-group-item text-center">{{item['Genus']}}</li>
+                    <span>{{item['Genus']}}</span>
+                    <br/>
                     {% endif %}
-                </ul>
+                    <span>{{item['Name'] }}</span>
             </div>
         </div>
     </a>

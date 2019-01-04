@@ -1,20 +1,26 @@
 {% block card_image %}
 <div class="card-columns">
     {% set baseurl = ''.join([request.base_url.split("category")[0],"static/"]) %}
-    {% for id, item in cards.items() %}
-    <a href="{{href}}{{id}}" class="custom-card {{'disabled' if 'type' not in item }}">
+    {% for item in cards %}
+
+    <a href="{{href}}{{item['name']}}" class="custom-card">
+
         <div class="card" style="width: 13rem;">
             <img
                     class="card-img-top lazy"
-                    data-src="{{ baseurl+item['image'] }}"
+                    data-src="{{ baseurl+item['image'] if 'image' in item else baseurl+'images/placeholder.svg'}}"
                     alt="Card"
             />
             <div class="card-footer text-center">
-                    {% if item['Genus'] %}
-                    <span class="font-italic">({{item['Genus']}})</span>
+                    {% if item['genus'] %}
+                    <span class="font-italic">({{item['genus']}})</span>
                     <br/>
                     {% endif %}
-                    <span>{{item['Name'] }}</span>
+                    {% if item['species'] %}
+                    <span class="font-italic">({{item['species']}})</span>
+                    <br/>
+                    {% endif %}
+                    <span>{{item['name'] }}</span>
             </div>
         </div>
     </a>

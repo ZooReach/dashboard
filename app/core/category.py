@@ -1,8 +1,64 @@
 from app.core.file_operations import get_json_file, get_json_file_path_from_data
 from ..utils.rest_client import get
 from ..utils.constants import api
-from ..exception.invalid_input_exception import InvalidInput
+#from ..exception.invalid_input_exception import InvalidInput
 import functools
+
+
+def frame_select_query_to_list_category(resource_id, filter_condition):
+    query = 'SELECT _id,name,kingdom,description,image,parent_id from "' + resource_id + '"'
+    if filter_condition is not '':
+        query = query + ' WHERE ' + filter_condition
+    return query
+
+
+def get_home_page():
+    url = api['datastore_search_sql']
+    resource_id="de365e19-0a44-416d-bbdc-4ef9f1b34a59"
+    filter_condition="parent_id = 0"
+    query = frame_select_query_to_list_category(resource_id,filter_condition)
+    query_param = {"sql": query}
+    response = get(url=url, queryparams=query_param)
+    return response['result']['records']
+
+def get_category_ckan(parent_id,parent_data):
+    url = api['datastore_search_sql']
+    resource_id = "de365e19-0a44-416d-bbdc-4ef9f1b34a59"
+    filter_condition = "parent_id ="+ str(parent_id)
+    query = frame_select_query_to_list_category(resource_id, filter_condition)
+    query_param = {"sql": query}
+    response = get(url=url, queryparams=query_param)
+    if len(response['result']['records']) > 0 :
+        return response['result']['records']
+    else:
+        return get_species_list_ckan(parent_data)
+
+def get_species_list_ckan(parent_data):
+    url = api['datastore_search_sql']
+    resource_id = get_resource_id_ckan(parent_data['_id'])
+    filter_condition = get_category_list_sql_condition_ckan(parent_data)
+    query = frame_select_query_to_list_species(resource_id, filter_condition)
+    query_param = {"sql": query}
+    response = get(url=url, queryparams=query_param)
+    ckan_species_list_response = response['result']['records']
+    species_obj=[]
+    for species in ckan_species_list_response :
+        species_obj.append({"name": species['species'], "genus": species['genus'], "type": {},
+                                            "kingdom": species['kingdom'],
+                                             "image": "images/placeholder.svg"})
+    return species_obj
+
+def get_parent_details(parent_name):
+    url = api['datastore_search_sql']
+    resource_id = "de365e19-0a44-416d-bbdc-4ef9f1b34a59"
+    filter_condition = "name"+ "='" + parent_name + "'"
+    query = frame_select_query_to_list_category(resource_id, filter_condition)
+    query_param = {"sql": query}
+    response = get(url=url, queryparams=query_param)
+    if len(response['result']['records']) > 0 :
+        return response['result']['records'][0]
+    else:
+        return None
 
 
 def get_category(path, json_data):
@@ -48,6 +104,11 @@ def get_category_list_sql_condition(path):
         category_list = category_list + category_index + "='" + category + "'"
     return category_list
 
+def get_category_list_sql_condition_ckan(parent_data):
+    name = parent_data['name']
+    return 'category_level2'+"='" + name + "'"
+
+
 
 def frame_select_query_to_list_species(resource_id,filter_condition):
     query = 'SELECT species,kingdom,genus from "' + resource_id+'"'
@@ -71,4 +132,19 @@ def get_resource_id(category_path):
         category_type = get_json_file(get_json_file_path_from_data(category_path[0]))
         return category_type['type'][category_path[0]]['resource_id']
     except Exception:
-        raise InvalidInput("Resouce id is missing in data input file")
+        raise Exception("Resouce id is missing in data input file")
+
+def get_resource_id_ckan(id):
+    url = api['datastore_search_sql']
+    query = 'select resource_id from "de365e19-0a44-416d-bbdc-4ef9f1b34a59" where _id='+str(id)
+    query_param = {"sql": query}
+    response = get(url=url, queryparams=query_param)
+    return response['result']['records'][0]['resource_id']
+
+def get_resource_id_ckan_by_name(name):
+    url = api['datastore_search_sql']
+    query = 'select resource_id from "de365e19-0a44-416d-bbdc-4ef9f1b34a59" where name'+"='" + name + "'"
+    query_param = {"sql": query}
+    response = get(url=url, queryparams=query_param)
+    return response['result']['records'][0]['resource_id']
+

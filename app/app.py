@@ -1,5 +1,6 @@
 from flask import Flask
 from .core.services import render_home, render_category, get_json, raise_exception
+from flask import send_file
 
 app = Flask(__name__)
 
@@ -18,6 +19,11 @@ def category(filename):
 @app.route('/api/<path:filename>')
 def api(filename):
     return get_json(filename)
+
+@app.route('/api/images/<path:filename>')
+def images(filename):
+    return send_file(filename)
+
 
 
 @app.errorhandler(500)

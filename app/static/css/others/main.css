@@ -172,3 +172,19 @@ hr.header-line{
 .card-footer{
     font-size: 14px;
 }
+
+.nav-style-container{
+    background: transparent;
+    background-color: darkkhaki ;
+    color:white
+
+}
+
+.nav-color{
+    color: white;
+    display: block;
+    padding: .5rem 1rem;
+}
+body{
+    background: #c7beac;
+}

@@ -41,7 +41,7 @@ a.custom-card:hover {
 }
 
 .banner {
-  height: 300px;
+  height: 400px;
   width: 100%;
   background-image: url("/static/images/Tiger2.jpg");
   background-repeat: no-repeat;
@@ -202,7 +202,7 @@ hr.header-line{
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border-radius: 25px;
+    border-radius: 8px;
     width: 100%;
     border: 2px solid #DCDCDC;
 }

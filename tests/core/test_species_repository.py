@@ -1,11 +1,11 @@
 from unittest import TestCase
 from app.core import species_repository
+from app.utils.constants import meta_data_resource_id
 from mock import patch,Mock
 
 
 class RepositoryTestCase(TestCase):
 
-    meta_data_resource_id = "de365e19-0a44-416d-bbdc-4ef9f1b34a59"
 
     @patch("app.core.species_repository.get",return_value={"result":{"records":[{"resource_id":"resource123"}]}})
     def test_get_resource_id_by_name(self,get):
@@ -18,7 +18,7 @@ class RepositoryTestCase(TestCase):
         self.assertEqual(None, resource_id)
 
     def test_query_to_get_resourceid(self):
-        query = 'select resource_id from "' + self.meta_data_resource_id + '" where name' + "='fish'"
+        query = 'select resource_id from "' + meta_data_resource_id + '" where name' + "='fish'"
         expected_query_param = {"sql": query}
         result = species_repository.query_to_get_resourceid('fish')
         self.assertEqual(expected_query_param,result)
@@ -56,7 +56,7 @@ class RepositoryTestCase(TestCase):
         self.assertEqual("parent_id =1",species_repository.parent_id_query(1))
 
     def test_query_for_resource_id_from(self):
-        query = 'select resource_id from "' + self.meta_data_resource_id + '" where _id=123'
+        query = 'select resource_id from "' + meta_data_resource_id + '" where _id=123'
         query_param = {"sql": query}
         self.assertEqual(query_param,species_repository.query_for_resource_id_from('123'))
 

@@ -1,7 +1,7 @@
 from ..utils.rest_client import get
 from ..utils.constants import api
 
-meta_data_resource_id="de365e19-0a44-416d-bbdc-4ef9f1b34a59"
+meta_data_resource_id="81ece0fb-2d6a-464f-9ea4-29a2aabf345a"
 
 
 def get_resource_id_by_name(name):

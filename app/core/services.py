@@ -20,7 +20,6 @@ def render_category(path):
         parent_name = path
 
     parent_data = get_parent_details(parent_name)
-
     category_path = split_path(path=path)
 
     if parent_data:

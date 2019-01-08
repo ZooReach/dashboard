@@ -7,7 +7,6 @@ def get_home_page():
 
 def get_category(parent_id,parent_data):
     categories_list = get_category_data(parent_id)
-
     if len(categories_list) == 0:
         species_data = get_species_data(parent_data)
         species_obj = []

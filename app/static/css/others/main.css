@@ -43,6 +43,7 @@ a.custom-card:hover {
 .banner {
   height: 400px;
   width: 100%;
+
   background-image: url("/static/images/Tiger2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -179,7 +180,6 @@ hr.header-line{
 
 .nav-style-container{
   background-color: #ffffff;
-  border: 1px solid black;
   opacity: 0.6;
   filter: alpha(opacity=60); /* For IE8 and earlier */
 
@@ -204,5 +204,5 @@ hr.header-line{
     background-clip: border-box;
     border-radius: 8px;
     width: 100%;
-    border: 2px solid #DCDCDC;
+    box-shadow: 1px 1px grey;
 }

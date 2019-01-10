@@ -17,11 +17,10 @@
 
 </head>
 <body>
-
+<div class="header-container">
+    {% include 'common/header.html' %}
+</div>
 <div class="container">
-    <div class="header-container">
-        {% include 'common/header.html' %}
-    </div>
     {% block navbar %}{% endblock navbar %}
 </div>
 {% include 'common/footer.html' %}

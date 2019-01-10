@@ -197,3 +197,21 @@ hr.header-line{
     width: 100%;
     box-shadow: 1px 1px grey;
 }
+
+.description {
+    background: rgb(248, 247, 247);
+    padding-top: 10px;
+}
+
+.row {
+    padding-top: 10px;
+}
+
+.description-title, .description-value{
+    text-transform: capitalize;
+}
+
+.description-title {
+    font-weight: bold;
+}
+

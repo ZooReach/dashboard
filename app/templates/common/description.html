@@ -1,11 +1,11 @@
 {% block description_container %}
-<div class="row">
+<div class="description row">
     <div class="col-md-8">
         {% for key,value in parent_data.items() %}
         {% if key in ["name","description","kingdom"] %}
         <div class="row">
-            <div class="col-md-4">{{key}}</div>
-            <div class="col-md-8">{{value}}</div>
+            <div class="col-md-4 description-title"><b>{{key}}</b></div>
+            <div class="col-md-8 description-value">{{value}}</div>
         </div>
         {% endif %}
         {% endfor %}

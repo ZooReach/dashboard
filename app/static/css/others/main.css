@@ -40,16 +40,6 @@ a.custom-card:hover {
   padding: 20px;
 }
 
-.banner {
-  height: 500px;
-  margin: auto;
-  width: 80%;
-
-  background-image: url("/static/images/Tiger2.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
 .download-container {
   background: rgb(248, 247, 247);
   padding-bottom: 30px;

@@ -195,7 +195,6 @@ hr.header-line{
     background-clip: border-box;
     border-radius: 8px;
     width: 100%;
-    box-shadow: 1px 1px grey;
 }
 
 .description {

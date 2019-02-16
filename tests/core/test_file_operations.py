@@ -32,7 +32,7 @@ class FileOperationTestCase(TestCase):
         get_visual_map_from_db.return_value = ["dir1", "dir2", "dir3"]
         os_dir.return_value = "dir"
         self.assertEqual(file.get_visual_files("fishes"),
-                         ["js/visualization/dir1", "js/visualization/dir2", "js/visualization/dir3"])
+                         ["js/visualization/dir1.js", "js/visualization/dir2.js", "js/visualization/dir3.js"])
 
     @patch("json.load")
     def test_update_json(self, json_load):

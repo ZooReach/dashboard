@@ -14,8 +14,8 @@ def list_dir(directory):
 
 
 def get_visual_files(filename):
-    directory = os.path.join(get_os_directory(), 'static', 'js', 'visualization', filename)
-    return list(map(lambda files: os.path.join('js', 'visualization', filename, files), list_dir(directory)))
+    directory = os.path.join(get_os_directory(), 'static', 'js', 'visualization')
+    return list(map(lambda files: os.path.join('js', 'visualization', files), list_dir(directory)))
 
 
 def get_json_file_path_from_data(root_category):

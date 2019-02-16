@@ -69,7 +69,7 @@ def raise_exception(e):
 
 def get_json(filename):
     category_path = split_path(path=filename)
-    my_module = import_module('.' + '.'.join(category_path), package='apis')
+    my_module = import_module('.' + '.'.join(category_path), package='app.apis')
     return my_module.main()
 
 

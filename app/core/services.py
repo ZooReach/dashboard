@@ -23,18 +23,17 @@ def render_category(path):
     category_path = split_path(path=path)
 
     if parent_data:
-        data = get_category(parent_data['_id'],parent_data)
-    else :
-       return render_species_details(category_path)
-
+        data = get_category(parent_data['_id'], parent_data)
+    else:
+        return render_species_details(category_path)
 
     return render_template('category/category.html', ckan_url=environment_details['ckan'],
-                            json_data=data,
-                            parent_data=parent_data,
-                            parent_name=parent_data['name'],
-                            fullpath=category_path,
-                            js_files=get_visual_files(parent_data['name']),
-                            base_url=get_base_url_till_given_string(request, 'category'))
+                           json_data=data,
+                           parent_data=parent_data,
+                           parent_name=parent_data['name'],
+                           fullpath=category_path,
+                           js_files=get_visual_files(parent_data['name']),
+                           base_url=get_base_url_till_given_string(request, 'category'))
 
 
 def render_species_details(path):
@@ -64,12 +63,11 @@ def get_category_name(category_path):
 
 
 def raise_exception(e):
-    return render_template('common/custom_error_view.html', message=e.description,base_url=get_base_url_till_given_string(request, 'category')), 500
+    return render_template('common/custom_error_view.html', message=e.description,
+                           base_url=get_base_url_till_given_string(request, 'category')), 500
 
 
 def get_json(filename):
     category_path = split_path(path=filename)
     my_module = import_module('.' + '.'.join(category_path), package='app.apis')
     return my_module.main()
-
-

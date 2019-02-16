@@ -27,12 +27,12 @@ class FileOperationTestCase(TestCase):
         self.assertEqual(file.list_dir("directory"), [])
 
     @patch("app.core.file_operations.get_os_directory")
-    @patch("app.core.file_operations.list_dir")
-    def test_get_visual_files(self, list_dir, os_dir):
-        list_dir.return_value = ["dir1", "dir2", "dir3"]
+    @patch("app.core.file_operations.get_visual_map_from_db")
+    def test_get_visual_files(self, get_visual_map_from_db, os_dir):
+        get_visual_map_from_db.return_value = ["dir1", "dir2", "dir3"]
         os_dir.return_value = "dir"
-        self.assertEqual(file.get_visual_files("filename"),
-                         ["js/visualization/filename/dir1", "js/visualization/filename/dir2", "js/visualization/filename/dir3"])
+        self.assertEqual(file.get_visual_files("fishes"),
+                         ["js/visualization/dir1", "js/visualization/dir2", "js/visualization/dir3"])
 
     @patch("json.load")
     def test_update_json(self, json_load):

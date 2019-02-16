@@ -13,9 +13,12 @@ def list_dir(directory):
     return []
 
 
-def get_visual_files(filename):
-    directory = os.path.join(get_os_directory(), 'static', 'js', 'visualization')
-    return list(map(lambda files: os.path.join('js', 'visualization', files), list_dir(directory)))
+def get_visual_map_from_db():
+    return 'fishes'
+
+
+def get_visual_files(species_name):
+    return list(map(lambda files: os.path.join('js', 'visualization', files), get_visual_map_from_db(species_name)))
 
 
 def get_json_file_path_from_data(root_category):

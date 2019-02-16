@@ -80,12 +80,12 @@ hr.header-line{
 
 .visualization{
   border-style: solid;
-  border-color:#9e9e9e;
+  border-color: #9e9e9e;
 }
 
 .description{
   padding: 10px;
-  background: #9e9e9e;
+  background: rgb(248, 247, 247);
   min-height: 50px;
   width: 100%;
 }
@@ -198,9 +198,9 @@ hr.header-line{
     width: 100%;
 }
 
-.description {
-    background: rgb(248, 247, 247);
-    padding-top: 10px;
+.visual_description {
+    background: #9e9e9e;
+    padding: 10px;
 }
 
 .row {

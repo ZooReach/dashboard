@@ -1,7 +1,7 @@
-## run this file with command 'python -m app.scripts.visual_metadata_db_dump' ##
+## run this file with command 'python -m scripts.visual_metadata_db_dump' from dashboard folder##
 
-from ..utils.constants import api, authorization_key, visual_meta_data_resource_id
-from ..utils.rest_client import post
+from app.utils.constants import api, authorization_key, visual_meta_data_resource_id
+from app.utils.rest_client import post
 import requests
 import sys
 import json
@@ -14,6 +14,7 @@ class VisualMetaData():
 
     def delete_visual_metadata(self):
         
+        response = None
         url = api.get('datastore_delete', '')
         headers = {
             'Authorization': authorization_key,
@@ -30,6 +31,7 @@ class VisualMetaData():
         except requests.exceptions.RequestException as e:
             print(e)
             sys.exit(1)  
+        return response
 
 
     def get_species_data(self):
@@ -46,6 +48,7 @@ class VisualMetaData():
 
     def insert_visual_metadata(self):
 
+        response = None
         url = api.get('datastore_create', '')
         headers = {
             'Authorization': authorization_key,
@@ -64,10 +67,11 @@ class VisualMetaData():
             response = post(url, headers, body)
         except requests.exceptions.RequestException as e:
             print(e)
-            sys.exit(1)    
+            sys.exit(1)
+        return response    
 
 
-def read_visual_metadat_map(meta_url):
+def read_visual_metadata_map(meta_url):
 
     response = None
     try:
@@ -75,14 +79,14 @@ def read_visual_metadat_map(meta_url):
     except requests.exceptions.RequestException as e:
         print(e)
         sys.exit(1)    
-    return response.text
+    return response
 
 
 if __name__ == '__main__':
     meta_url = 'https://raw.githubusercontent.com/ZooReach/visual/master/app/helper/species_metadata.json'
-    species_list =  read_visual_metadat_map(meta_url)
+    species_list =  read_visual_metadata_map(meta_url)
     if species_list:
-        visual_metadat_obj =  VisualMetaData(json.loads(species_list))
-        visual_metadat_obj.delete_visual_metadata()
-        visual_metadat_obj.insert_visual_metadata()
+        visual_metadat_obj =  VisualMetaData(json.loads(species_list.text))
+        delete_status = visual_metadat_obj.delete_visual_metadata()
+        insertion_status = visual_metadat_obj.insert_visual_metadata()
 

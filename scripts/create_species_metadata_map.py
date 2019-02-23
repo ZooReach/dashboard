@@ -1,7 +1,8 @@
-from app.utils.constants import api, authorization_key, meta_data_resource_id
+from app.utils.constants import api, authorization_key, meta_data_resource_id, github_access_token_key, visual_data_map_file_path
 from app.utils.rest_client import get
 import requests
 import json
+from github import Github
 import sys
 
 class MetaData():
@@ -22,10 +23,34 @@ class MetaData():
         return response
 
 
-    def create_visual_metadata_map(self):
-        pass    
+    def create_visual_metadata_map(self, species_data):
+        visual_map = []
+        for data in species_data:
+            visual_map.append(
+                {
+                    "id":int(data.get("id", '0')),
+                    "visual": data.get("name", '')
+                }
+            )
+        return visual_map
+
+
+    def commit_species_visual_metadat(self, visual_map):
+        g = Github(github_access_token_key)
+        for repo in g.get_user().get_repos():
+            if repo.name == 'visual':
+                sha_key = repo.get_file_contents(visual_data_map_file_path).sha
+                commit_response = repo.update_file(path=visual_data_map_file_path, 
+                                    message="Create visual metadata map for species",
+                                    content = json.dumps(visual_map),
+                                    sha = sha_key
+                                    )
+        return commit_response
 
 
 if __name__ == '__main__':
     meta_data = MetaData()
-    meta_data.get_parent_metadata()
+    species_data = meta_data.get_parent_metadata()
+    visual_map = meta_data.create_visual_metadata_map(species_data['result']['records'])
+    response = meta_data.commit_species_visual_metadat(visual_map)
+

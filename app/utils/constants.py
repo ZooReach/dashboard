@@ -16,3 +16,7 @@ meta_data_resource_id="81ece0fb-2d6a-464f-9ea4-29a2aabf345a"
 visual_meta_data_resource_id = "847896c8-ad47-4bf7-a5e0-05c2c41d0c64"
 
 authorization_key = "884e06e0-54f6-413e-9c0d-af1666462714"
+
+github_access_token_key = "287319ac9cd77be1bb7ad5be98b6f15e25374243"
+
+visual_data_map_file_path = 'app/helper/species_metadata.json'

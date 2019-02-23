@@ -1,5 +1,3 @@
-## run the script with command 'python -m scripts.create_species_metadata_map'
-
 import unittest
 from scripts.create_species_metadata_map import MetaData
 from mock import patch, Mock

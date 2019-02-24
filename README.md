@@ -1,11 +1,17 @@
 # dashboard
-For development
+## For development
+
+***Run outside docker***
+
+python3 -m venv localenv
+source localenv/bin/activate
 
 cd app
+pip install -r requirements.txt
 
 FLASK_APP=app:app FLASK_DEBUG=1 python -m flask run
 
-To run inside docker
+***Run inside docker***
 
 cd app
 

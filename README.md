@@ -1,4 +1,4 @@
-# dashboard
+# Dashboard
 ## For development
 
 ***Run outside docker***

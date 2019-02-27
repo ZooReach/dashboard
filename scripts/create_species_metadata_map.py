@@ -37,7 +37,7 @@ class MetaData():
         return visual_map
 
 
-    def commit_species_visual_metadat(self, visual_map, github_access_token):
+    def commit_species_visual_metadata(self, visual_map, github_access_token):
         g = Github(github_access_token)
         for repo in g.get_user().get_repos():
             if repo.name == 'visual':
@@ -55,5 +55,7 @@ if __name__ == '__main__':
     github_access_token = sys.argv[1]
     species_data = meta_data.get_parent_metadata()
     visual_map = meta_data.create_visual_metadata_map(species_data['result']['records'])
-    response = meta_data.commit_species_visual_metadat(visual_map, github_access_token)
+    response = meta_data.commit_species_visual_metadata(visual_map, github_access_token)
+    print(response)
+    print(dir(response))
 

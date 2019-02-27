@@ -14,13 +14,8 @@ def render_home():
 
 
 def render_category(path):
-    if '/' in path:
-        parent_name = path.split('/')[-1:][0]
-    else:
-        parent_name = path
-
-    parent_data = get_parent_details(parent_name)
-    category_path = split_path(path=path)
+    parent_data = get_parent_details(path.split('/')[-1:][0])
+    category_path = split_path(path)
 
     if parent_data:
         data = get_category(parent_data['_id'], parent_data)
@@ -32,7 +27,7 @@ def render_category(path):
                            parent_data=parent_data,
                            parent_name=parent_data['name'],
                            fullpath=category_path,
-                           js_files=get_visual_files(parent_data['name']),
+                           js_files=get_visual_files(parent_data['id']),
                            base_url=get_base_url_till_given_string(request, 'category'))
 
 

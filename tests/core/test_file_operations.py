@@ -38,3 +38,10 @@ class FileOperationTestCase(TestCase):
     def test_update_json(self, json_load):
         json_load.return_value = {"type": {"key": "value"}}
         self.assertEqual(file.update_json({}, "somefile"), {"key": "value"})
+
+    @patch("app.core.file_operations.get_visual_data")
+    def test_get_visual_map_from_db(self, get_visual_data):
+        visual_response = ['visual1', 'visual2']
+        get_visual_data.return_value = visual_response
+        self.assertEqual(file.get_visual_map_from_db(1), visual_response)
+        get_visual_data.assert_called_with(1)

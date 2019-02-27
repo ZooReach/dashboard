@@ -1,6 +1,7 @@
 import os
 import json
 import functools
+from .species_repository import get_visual_data
 
 
 def get_os_directory():
@@ -13,13 +14,13 @@ def list_dir(directory):
     return []
 
 
-def get_visual_map_from_db(species_name):
-    return ['fishes']
+def get_visual_map_from_db(id):
+    return get_visual_data(id)
 
 
-def get_visual_files(species_name):
+def get_visual_files(id):
     return list(map(lambda files: os.path.join('js', 'visualization', '.'.join([files, 'js'])),
-                    get_visual_map_from_db(species_name)))
+                    get_visual_map_from_db(id)))
 
 
 def get_json_file_path_from_data(root_category):

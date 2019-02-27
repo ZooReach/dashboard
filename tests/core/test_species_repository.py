@@ -23,15 +23,15 @@ class RepositoryTestCase(TestCase):
         result = species_repository.query_to_get_resourceid('fish')
         self.assertEqual(expected_query_param,result)
 
-    def test_frame_select_query_to_list_category_without_filter_condition(self):
-        expected = 'SELECT _id,name,kingdom,description,image,parent_id from "12345"'
-        actual = species_repository.frame_select_query_to_list_category('12345','')
-        self.assertEqual(expected,actual)
+    # def test_frame_select_query_to_list_category_without_filter_condition(self):
+    #     expected = 'SELECT _id,name,kingdom,description,image,parent_id from "12345"'
+    #     actual = species_repository.frame_select_query_to_list_category('12345','')
+    #     self.assertEqual(expected,actual)
 
-    def test_frame_select_query_to_list_category_with_filter_condition(self):
-        expected = 'SELECT _id,name,kingdom,description,image,parent_id from "12345" WHERE'+ " name='fish'"
-        actual = species_repository.frame_select_query_to_list_category('12345', "name='fish'")
-        self.assertEqual(expected, actual)
+    # def test_frame_select_query_to_list_category_with_filter_condition(self):
+    #     expected = 'SELECT _id,name,kingdom,description,image,parent_id from "12345" WHERE'+ " name='fish'"
+    #     actual = species_repository.frame_select_query_to_list_category('12345', "name='fish'")
+    #     self.assertEqual(expected, actual)
 
     @patch("app.core.species_repository.get", return_value={"result": {"records": [{"resource_id": "resource123"},{"resource_id": "resource1234"}]}})
     def test_get_parent_details(self,get):

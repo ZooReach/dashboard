@@ -1,7 +1,5 @@
 from ..utils.rest_client import get
-from ..utils.constants import api,meta_data_resource_id
-
-
+from ..utils.constants import api, meta_data_resource_id
 
 
 def get_resource_id_by_name(name):
@@ -30,16 +28,25 @@ def get_parent_details(parent_name):
     query = frame_select_query_to_list_category(meta_data_resource_id, filter_condition)
     query_param = {"sql": query}
     response = get(url=url, queryparams=query_param)
-    if len(response['result']['records']) > 0 :
+    if len(response['result']['records']) > 0:
         return response['result']['records'][0]
     else:
         return None
 
 
+def get_visual_data(id):
+    url = api['datastore_search_sql']
+    filter_condition = "metadata_id='" + id + "'"
+    query = frame_visual_query('847896c8-ad47-4bf7-a5e0-05c2c41d0c64', filter_condition)
+    query_param = {"sql": query}
+    response = get(url=url, queryparams=query_param)
+    return list(map(lambda x: x['visual'], response['result']['records']))
+
+
 def get_home_page_data():
     url = api['datastore_search_sql']
     filter_condition = filtercondition_home_page()
-    query = frame_select_query_to_list_category(meta_data_resource_id,filter_condition)
+    query = frame_select_query_to_list_category(meta_data_resource_id, filter_condition)
     query_param = {"sql": query}
     response = get(url=url, queryparams=query_param)
     return response['result']['records']
@@ -63,7 +70,14 @@ def parent_id_query(parent_id):
 
 
 def frame_select_query_to_list_category(resource_id, filter_condition):
-    query = 'SELECT _id,name,kingdom,description,image,parent_id from "' + resource_id + '"'
+    query = 'SELECT _id,id,name,kingdom,description,image,parent_id from "' + resource_id + '"'
+    if filter_condition is not '':
+        query = query + ' WHERE ' + filter_condition
+    return query
+
+
+def frame_visual_query(resource_id, filter_condition):
+    query = 'SELECT visual from "' + resource_id + '"'
     if filter_condition is not '':
         query = query + ' WHERE ' + filter_condition
     return query
@@ -77,7 +91,6 @@ def get_species_data(parent_data):
     query_param = {"sql": query}
     response = get(url=url, queryparams=query_param)
     return response['result']['records']
-
 
 
 def get_resource_id_ckan(id):
@@ -95,11 +108,11 @@ def query_for_resource_id_from(id):
 
 def get_category_list_sql_condition_ckan(parent_data):
     name = parent_data['name']
-    return 'category_level2'+"='" + name + "'"
+    return 'category_level2' + "='" + name + "'"
 
 
-def frame_select_query_to_list_species(resource_id,filter_condition):
-    query = 'SELECT species,kingdom,genus from "' + resource_id+'"'
+def frame_select_query_to_list_species(resource_id, filter_condition):
+    query = 'SELECT species,kingdom,genus from "' + resource_id + '"'
     if filter_condition is not '':
         query = query + ' WHERE ' + filter_condition
     return query
@@ -114,12 +127,9 @@ def getSpeciesDetail(category_name, species_name):
 
 
 def form_species_query(resource_id, species_name):
-
     query = 'SELECT * from "' + resource_id + '"'
-    query = query + ' WHERE species LIKE ' + "'" +species_name+"%'"
+    query = query + ' WHERE species LIKE ' + "'" + species_name + "%'"
 
     query_param = {"sql": query}
 
     return query_param
-
-

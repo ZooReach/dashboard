@@ -1,8 +1,6 @@
 from unittest import TestCase
 from app.core import services
-import json
 from mock import patch, Mock
-from app.core.species_repository import get_parent_details
 
 
 class ServicesTestCase(TestCase):

@@ -6,14 +6,19 @@ def get_data_from_ckan(queryparams):
     return get(url=api['datastore_search_sql'], queryparams={"sql": queryparams})
 
 
+def form_sql_query_with_meta_data_table(select_parameters, condition=None):
+    main_statement = 'select ' + ','.join(str(name) for name in select_parameters) + ' from ' + meta_data_resource_id
+    if condition:
+        return main_statement + ' where ' + ' and '.join('='.join(
+            [key, (str(value) if isinstance(value, int) else '"{}"'.format(value))]) for key, value in
+                                                         condition.items())
+    return main_statement
+
+
 def get_resource_id_by_name(name):
-    response = get_data_from_ckan(query_to_get_resourceid(name))
+    response = get_data_from_ckan(
+        form_sql_query_with_meta_data_table(select_parameters=['resource_id'], condition={'name': name}))
     return validateAndExtractResult(response)
-
-
-def query_to_get_resourceid(name):
-    query = 'select resource_id from "' + meta_data_resource_id + '" where name' + "='" + name + "'"
-    return query
 
 
 def validateAndExtractResult(response):
@@ -41,25 +46,17 @@ def get_visual_data(id):
 
 
 def get_home_page_data():
-    filter_condition = filtercondition_home_page()
-    query = frame_select_query_to_list_category(meta_data_resource_id, filter_condition)
-    response = get_data_from_ckan(query)
+    response = get_data_from_ckan(form_sql_query_with_meta_data_table(
+        select_parameters=['_id', 'id', 'name', 'kingdom', 'description', 'image', 'parent_id'],
+        condition={'parent_id': '0'}))
     return response['result']['records']
-
-
-def filtercondition_home_page():
-    return "parent_id = 0"
 
 
 def get_category_data(parent_id):
-    filter_condition = parent_id_query(parent_id)
-    query = frame_select_query_to_list_category(meta_data_resource_id, filter_condition)
-    response = get_data_from_ckan(query)
+    response = get_data_from_ckan(form_sql_query_with_meta_data_table(
+        select_parameters=['_id', 'id', 'name', 'kingdom', 'description', 'image', 'parent_id'],
+        condition={'parent_id': str(parent_id)}))
     return response['result']['records']
-
-
-def parent_id_query(parent_id):
-    return "parent_id =" + str(parent_id)
 
 
 def frame_select_query_to_list_category(resource_id, filter_condition):

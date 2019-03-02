@@ -5,10 +5,17 @@ from mock import patch, Mock
 
 class ServicesTestCase(TestCase):
 
+    @patch("app.core.services.get_home_page")
     @patch("app.core.services.render_template")
-    def test_render_home(self, render_template):
+    def test_render_home(self, render_template, get_home_page):
         render_template.return_value = 'success'
+        data = 'returned_value'
+        get_home_page.return_value = data
+        envvar = 'ckan'
+        services.environment_details['ckan'] = envvar
         self.assertEqual(services.render_home(), 'success')
+        get_home_page.assert_called_once()
+        render_template.assert_called_once_with('home/home.html', ckan_url=envvar, json_data=data)
 
     @patch("app.core.services.split_path")
     @patch("app.core.services.get_parent_details")

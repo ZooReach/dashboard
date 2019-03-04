@@ -17,16 +17,6 @@ class RepositoryTestCase(TestCase):
         resource_id = species_repository.get_resource_id_by_name("fishes")
         self.assertEqual(None, resource_id)
 
-    def test_frame_select_query_to_list_category_without_filter_condition(self):
-        expected = 'SELECT _id,id,name,kingdom,description,image,parent_id from "12345"'
-        actual = species_repository.frame_select_query_to_list_category('12345', '')
-        self.assertEqual(expected, actual)
-
-    def test_frame_select_query_to_list_category_with_filter_condition(self):
-        expected = 'SELECT _id,id,name,kingdom,description,image,parent_id from "12345" WHERE' + " name='fish'"
-        actual = species_repository.frame_select_query_to_list_category('12345', "name='fish'")
-        self.assertEqual(expected, actual)
-
     @patch("app.core.species_repository.get_data_from_ckan",
            return_value={"result": {"records": [{"resource_id": "resource123"}, {"resource_id": "resource1234"}]}})
     def test_get_parent_details(self, get):
@@ -44,28 +34,15 @@ class RepositoryTestCase(TestCase):
         expected = [{"resource_id": "resource123"}, {"resource_id": "resource1234"}]
         self.assertEqual(expected, species_repository.get_home_page_data())
 
-    def test_query_for_resource_id_from(self):
-        query = 'select resource_id from "' + meta_data_resource_id + '" where _id=123'
-        self.assertEqual(query, species_repository.query_for_resource_id_from('123'))
-
-    def test_get_category_list_sql_condition_ckan(self):
-        name = 'Freshwater Eels'
-        self.assertEqual('category_level2' + "='" + name + "'",
-                         species_repository.get_category_list_sql_condition_ckan({"name": name}))
-
-    def test_frame_select_query_to_list_species(self):
-        query = 'SELECT species,kingdom,genus from "123" WHERE name="fish"'
-        self.assertEqual(query, species_repository.frame_select_query_to_list_species('123', 'name="fish"'))
-
     @patch("app.core.species_repository.get_data_from_ckan",
            return_value={"result": {"records": [{"resource_id": "resource123"}, {"resource_id": "resource1234"}]}})
     def test_getSpeciesDetail(self, get):
         self.assertEqual({"resource_id": "resource123"}, species_repository.getSpeciesDetail('', ''))
 
     def test_form_query_params(self):
-        query = 'SELECT * from "resource_id_one" WHERE species LIKE '
+        query = 'query WHERE species LIKE '
         query += "'species_one%'"
-        self.assertEqual(query, species_repository.form_species_query("resource_id_one", "species_one"))
+        self.assertEqual(query, species_repository.form_species_query("query", "species_one"))
 
     @patch("app.core.species_repository.get_data_from_ckan")
     def test_get_data_from_ckan(self, get_data_from_ckan):
@@ -75,13 +52,29 @@ class RepositoryTestCase(TestCase):
         self.assertEqual(species_repository.get_data_from_ckan(call_parameter), ckan_data)
         get_data_from_ckan.assert_called_with(call_parameter)
 
-    def test_form_sql_query_with_meta_data_table_when_only_select_parameter_passed(self):
-        expected = 'select id,name,desc from ' + meta_data_resource_id
-        actual = species_repository.form_sql_query_with_meta_data_table(select_parameters=['id', 'name', 'desc'])
+    def test_form_sql_query_when_only_select_parameter_passed(self):
+        resource_id = "resource_id"
+        expected = 'select id,name,desc from \"' + resource_id + '\"'
+        actual = species_repository.form_sql_query(resource_id=resource_id, select_parameters=['id', 'name', 'desc'])
         self.assertEqual(actual, expected)
 
-    def test_form_sql_query_with_meta_data_table_when_condition_is_passed(self):
-        expected = 'select id,name,desc from ' + meta_data_resource_id + ' where id=123 and name="aaa"'
-        actual = species_repository.form_sql_query_with_meta_data_table(select_parameters=['id', 'name', 'desc'],
-                                                                        condition={'id': 123, 'name': 'aaa'})
+    def test_form_sql_query_when_condition_is_passed(self):
+        resource_id = "resource_id"
+        expected = "select id,name,desc from \"" + resource_id + "\" where id=123 and name='aaa'"
+        actual = species_repository.form_sql_query(resource_id=resource_id, select_parameters=['id', 'name', 'desc'],
+                                                   condition={'id': 123, 'name': 'aaa'})
         self.assertEqual(actual, expected)
+
+    @patch("app.core.species_repository.form_sql_query")
+    def test_form_sql_query_with_meta_data_table(self, form_sql_query):
+        success_return_value = "success"
+        meta_resource_id = "meta_resource_id"
+        species_repository.meta_data_resource_id = meta_resource_id
+        form_sql_query.return_value = success_return_value
+        selected_parameters = "selected_parameters"
+        condition = "condition"
+        self.assertEqual(species_repository.form_sql_query_with_meta_data_table(select_parameters=selected_parameters,
+                                                                                condition=condition),
+                         success_return_value)
+        form_sql_query.assert_called_once_with(resource_id=meta_resource_id, select_parameters=selected_parameters,
+                                               condition=condition)

@@ -60,11 +60,11 @@ a.custom-card:hover {
   margin: 35px 0;
   border-right: 1px solid #ccc;
 }
-
+/* 
 .container-footer {
   color: grey;
   padding: 30px 0;
-}
+} */
 
 .fb-icon {
   color: #4267B2
@@ -215,3 +215,21 @@ hr.header-line{
     font-weight: bold;
 }
 
+.super-container {
+  position: relative;
+  min-height: 100px;
+}
+
+ .container {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px;
+ }
+ 
+ .container-footer {
+  position: absolute  ;
+  bottom: 0;
+  width: 100%;
+ }
+ 

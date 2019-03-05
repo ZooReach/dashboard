@@ -2,10 +2,12 @@ from flask import render_template, request
 
 from .category import get_home_page, get_category
 from .file_operations import get_visual_files
-from .species_repository import get_parent_details, getSpeciesDetail
+from .species_repository import get_parent_details, getSpeciesDetail, get_all_species_details
 from ..utils.constants import environment_details, display_details
 from ..utils.extract_value import get_base_url_till_given_string, split_path
+from ..utils.auto_suggestion_using_trie import autocomplete_main
 from importlib import import_module
+import json
 
 
 def render_home():
@@ -66,3 +68,18 @@ def get_json(filename):
     category_path = split_path(path=filename)
     my_module = import_module('.' + '.'.join(category_path), package='app.apis')
     return my_module.main()
+
+
+def render_experts():
+    return render_template('species_experts/find_experts.html', ckan_url=environment_details['ckan'])
+
+
+def find_species_experts():
+    search_key = request.args.get('search_key', '')
+    species_data = get_all_species_details()
+    autocompleted_data = autocomplete_main(search_key, species_data)
+    if not autocompleted_data:
+        return json.dumps(autocompleted_data)
+    return json.dumps(autocompleted_data[:10])
+    
+    

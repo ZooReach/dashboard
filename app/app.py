@@ -1,5 +1,5 @@
 from flask import Flask
-from .core.services import render_home, render_category, get_json, raise_exception
+from .core.services import render_home, render_category, get_json, raise_exception,render_experts, find_species_experts
 from flask import send_file
 
 app = Flask(__name__)
@@ -11,8 +11,17 @@ def home():
     return render_home()
 
 
+@app.route('/experts')
+def experts():
+    return render_experts()
+
+@app.route('/find-experts')
+def find_experts():
+    return find_species_experts()
+
+
 @app.route('/category/<path:filename>')
-def category(filename):
+def category(filename): 
     return render_category(filename)
 
 

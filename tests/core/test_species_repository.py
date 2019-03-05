@@ -78,3 +78,7 @@ class RepositoryTestCase(TestCase):
                          success_return_value)
         form_sql_query.assert_called_once_with(resource_id=meta_resource_id, select_parameters=selected_parameters,
                                                condition=condition)
+
+    def test_get_result_record(self):
+        data = {'result': {'records': 'success_value'}}
+        self.assertEqual(species_repository.get_result_record(data), 'success_value')

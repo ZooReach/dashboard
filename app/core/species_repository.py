@@ -94,18 +94,9 @@ def getSpeciesDetail(category_name, species_name):
     return species_record
 
 
-def form_species_query(resource_id, species_name):
-    query = 'SELECT * from "' + resource_id + '"'
-    query = query + ' WHERE species LIKE ' + "'" + species_name + "%'"
-    return query
-
-
 def get_all_species_details():
     url = api.get('datastore_search_sql', '')
     query = 'select * from "' + meta_data_resource_id + '"'
     query_param = {"sql": query}
     response = get(url=url, queryparams=query_param)
     return response["result"]["records"]
-    
-
-

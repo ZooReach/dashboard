@@ -217,7 +217,7 @@ hr.header-line{
 
 .super-container {
   position: relative;
-  min-height: 100px;
+  min-height: 100vh;
 }
 
  .container {

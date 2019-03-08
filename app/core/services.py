@@ -2,8 +2,8 @@ from flask import render_template, request
 
 from .category import get_home_page, get_category
 from .file_operations import get_visual_files
-from .species_repository import get_parent_details, getSpeciesDetail, get_all_species_details
-from ..utils.constants import environment_details, display_details
+from .species_repository import get_parent_details, getSpeciesDetail, get_all_species_details, get_home_page_data
+from ..utils.constants import environment_details, display_details  
 from ..utils.extract_value import get_base_url_till_given_string, split_path
 from ..utils.auto_suggestion_using_trie import autocomplete_main
 from importlib import import_module
@@ -71,7 +71,8 @@ def get_json(filename):
 
 
 def render_experts():
-    return render_template('species_experts/find_experts.html', ckan_url=environment_details['ckan'])
+    data = get_home_page_data()
+    return render_template('species_experts/find_experts.html', ckan_url=environment_details['ckan'], parent_data=data)
 
 
 def find_species_experts():

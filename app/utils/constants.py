@@ -20,3 +20,5 @@ authorization_key = "884e06e0-54f6-413e-9c0d-af1666462714"
 visual_data_map_file_path = 'app/helper/species_metadata.json'
 
 visual_resource_id = '847896c8-ad47-4bf7-a5e0-05c2c41d0c64'
+
+experts_resource_id = '315c64b1-1b26-40e2-bd7c-3818c6ccdcd6'

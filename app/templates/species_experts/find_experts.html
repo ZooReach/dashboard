@@ -3,11 +3,10 @@
 {% block container %}
 <div class="form-group" id="select-div">
   <select class="form-control" id="species-select">
-    <option value = "1">Choose specied to find expert</option>
-    <option>spider</option>
-    <option>rats</option>
-    <option>fishes</option>
-    <option>raptiles</option>
+    <option value = "">Choose specied to find expert</option>
+    {% for metadata in parent_data %}
+    <option value="{{metadata.id}}">{{ metadata.name }}</option>
+    {% endfor %}
   </select>
 </div>
 
@@ -24,25 +23,13 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>3454546456</td>
+
       </tr>
       <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>7686787872</td>
+        
       </tr>
       <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>9789878978</td>
+        
       </tr>
     </tbody>
   </table>

@@ -232,4 +232,7 @@ hr.header-line{
   bottom: 0;
   width: 100%;
  }
- 
+
+ #expert-table-div {
+  padding: 40px;
+ }

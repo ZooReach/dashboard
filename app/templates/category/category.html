@@ -5,31 +5,31 @@
 <br>
 <br>
 <br>
-<h3>{{parent_name}}</h3>
-<hr class="header-line">
-
 {% set parent_data=parent_data %}
+
+<div class="sub-title text-left group_title">{{parent_data['name']}}({{parent_data['kingdom']}})</div>
+<hr class="header-line">
 
 {% include 'common/description.html' %}
 
 <hr class="header-line">
 
-<h3>Categories of {{parent_name}}</h3>
+<div class="sub-title text-left group_title">Categories of {{parent_name}}</div>
 {% set cards=json_data if json_data else {} %}
 {% set href=base_url+'/'.join(fullpath)+'/' %}
 {% include 'common/card_image.html' %}
 
 <hr class="header-line">
 
-<h3>Visualizations</h3>
 {% include 'common/visualizations.html' %}
 
 <hr class="header-line">
 
-<h3>Downloadable Formats</h3>
 {% set formats=['csv', 'excel', 'pdf'] %}
 {% include 'common/downloadables.html' %}
 <script>
         d3.select("visual").append("svg").append("rect").attr("width",50).attr("height",200).style("fill","blue");
+
+
 </script>
 {% endblock container %}

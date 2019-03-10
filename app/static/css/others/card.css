@@ -42,19 +42,19 @@ a.custom-card:hover {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
     background-clip: border-box;
     border-radius: 8px;
     width: 100%;
+    border-color: #EFEBE9;
 }
 
 .card-footer{
     font-size: 14px;
     padding: 5px;
+    background-color: #EFEBE9;
 }
 
 .card-main-area{
-  height: 200px;
   display: flex;
   align-items: center;
 }

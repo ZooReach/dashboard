@@ -2,11 +2,13 @@
   width: 100%;
   font-weight: bold;
   padding: 20px;
+  font-size: 25px;
+  color: #00796B;
+  text-align: left;
 }
 
 .download-container {
   background: rgb(248, 247, 247);
-  padding-bottom: 30px;
 }
 
 .download-icon {
@@ -115,30 +117,27 @@ hr.header-line{
 
 /* GIVE EVERY CHILD A DIFFERENT COLOR */
 .topnav p:nth-child(even) a{
-  background: #696969;
+  background: #004D40;
 }
 
 .topnav p:nth-child(even):after{
-  border-left: 20px solid #696969;
+  border-left: 20px solid #004D40;
 }
 
 .topnav p:nth-child(odd) a{
-  background: #808080;
+  background: #00695C;
 }
 
 .topnav p:nth-child(odd):after{
-  border-left: 20px solid #808080;
+  border-left: 20px solid #00695C;
 }
 
 .nav-style-container{
-  background-color: #ffffff;
-  opacity: 0.6;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
-
+  background-color: #B2DFDB;
 }
 
 .nav-color{
-    color : black;
+    color : #3E2723;
     font-weight: bold;
     display: block;
     padding: .5rem 1rem;
@@ -167,16 +166,22 @@ hr.header-line{
   min-height: 100vh;
 }
 
- .container {
+.container {
   overflow: hidden;
   display: block;
   position: relative;
   padding-bottom: 100px;
- }
+  background-color: #F5F5F5;
+}
  
- .container-footer {
+.container-footer {
   position: absolute  ;
   bottom: 0;
   width: 100%;
- }
+}
+
+.body{
+    font-family: sans-serif;
+    color: #3E2723;
+}
  

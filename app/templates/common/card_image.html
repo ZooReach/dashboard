@@ -1,4 +1,5 @@
 {% block card_image %}
+<link href="{{ url_for('static', filename='css/others/card.css') }}" rel="stylesheet">
 <div class="card-columns">
     {% set baseurl = ''.join([request.base_url.split("category")[0],"static/"]) %}
     {% for item in cards %}
@@ -6,21 +7,23 @@
     <a href="{{href}}{{item['name']}}" class="custom-card">
 
         <div class="card">
-            <img
-                    class="card-img-top lazy"
-                    data-src="{{ baseurl+item['image'] if 'image' in item else baseurl+'images/placeholder.svg'}}"
-                    alt="Card"
-            />
+            <div class="card-main-area">
+                <img
+                        class="card-img-top lazy"
+                        data-src="{{ baseurl+item['image'] if 'image' in item else baseurl+'images/placeholder.svg'}}"
+                        alt="Card"
+                />
+            </div>
             <div class="card-footer text-center">
-                    {% if item['genus'] %}
-                    <span class="font-italic">({{item['genus']}})</span>
-                    <br/>
-                    {% endif %}
-                    {% if item['species'] %}
-                    <span class="font-italic">({{item['species']}})</span>
-                    <br/>
-                    {% endif %}
-                    <span>{{item['name'] }}</span>
+                {% if item['genus'] %}
+                <span class="font-italic">({{item['genus']}})</span>
+                <br/>
+                {% endif %}
+                {% if item['species'] %}
+                <span class="font-italic">({{item['species']}})</span>
+                <br/>
+                {% endif %}
+                <span>{{item['name'] }}</span>
             </div>
         </div>
     </a>

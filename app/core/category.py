@@ -13,7 +13,7 @@ def get_category(parent_id,parent_data):
         for species in species_data:
             species_obj.append({"name": species['species'], "genus": species['genus'], "type": {},
                                 "kingdom": species['kingdom'],
-                                "image": "images/placeholder.svg"})
+                                "image": "images/placeholder.png"})
         return species_obj
 
     return categories_list

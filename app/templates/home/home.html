@@ -2,16 +2,36 @@
 
 {% extends 'common/layout.html' %}
 
+{% block header_content %}
+<div class="header-content shadow">
+    <div><h1 class="transparent-title text-center">When you love and look after an animal, you help to lift the whole of
+        creation.
+        If you cannot care
+        for an
+        animal, then at least feed the birds and wild creatures.</h1></div>
+
+</div>
+{% endblock header_content %}
+
 {% block container %}
 {% block container_card_list %}
-<div class="sub-title text-center">Our Nature</div>
+<div class="our_nature">
 
-{% set href="category/" %}
-{% set cards=json_data %}
-{% include 'common/card_image.html' %}
+    <div class="sub-title group_title">Our Nature</div>
 
-{% endblock container_card_list%}
+    {% set href="category/" %}
+    {% set cards=json_data %}
+    {% include 'common/card_image.html' %}
 
-{% set formats=['csv', 'excel', 'pdf','pie'] %}
-{% include 'common/downloadables.html' %}
-{% endblock container %}
+    {% endblock container_card_list%}
+</div>
+
+<div class="visual">
+    {% include 'common/visualizations.html' %}
+</div>
+
+<div class="downloadable_format">
+    {% set formats=['csv', 'excel', 'pdf','pie'] %}
+    {% include 'common/downloadables.html' %}
+    {% endblock container %}
+</div>

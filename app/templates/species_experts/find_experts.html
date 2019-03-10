@@ -1,9 +1,9 @@
 {% extends 'common/layout.html' %}
 
 {% block container %}
-<div class="form-group" id="select-div">
+<div class="form-group find-expert" id="select-div">
   <select class="form-control" id="species-select">
-    <option value = "">Choose specied to find expert</option>
+    <option value = "">Choose species to find experts</option>
     {% for metadata in parent_data %}
     <option value="{{metadata.id}}">{{ metadata.name }}</option>
     {% endfor %}
@@ -11,7 +11,8 @@
 </div>
 
 <div class="form-group">
-    <div class="inner" id="expert-table-div">
+    <div class="inner find-expert" id="expert-table-div">
+        
     </div>
 </div>
 

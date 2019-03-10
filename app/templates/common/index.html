@@ -14,11 +14,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scripts/image_loader.js') }}"></script>
-   
+
     <!--for autocomplete search box -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{url_for('static', filename='js/scripts/auto_suggestion.js')}}"></script>
     <!--for autocomplete search box -->
 
@@ -26,14 +26,15 @@
 
 </head>
 <body>
-<div class="super-container"> 
-<div class="header-container">
-    {% include 'common/header.html' %}
+<div class="super-container">
+    <div class="header-container">
+        {% include 'common/header.html' %}
+        {% block header_content %}{% endblock header_content %}
+    </div>
+    <div class="container rounded">
+        {% block navbar %}{% endblock navbar %}
+    </div>
+    {% include 'common/footer.html' %}
 </div>
-<div class="container">
-    {% block navbar %}{% endblock navbar %}
-</div>
-{% include 'common/footer.html' %}
-</div>   
 </body>
 </html>

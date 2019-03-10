@@ -1,9 +1,27 @@
-.banner {
-  height: 650px;
-  margin: auto;
-  width: 100%;
+.container {
+  margin-top: -21px;
+}
 
-  background-image: url("/static/images/Tiger2.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+.nav-style-container{
+  opacity: 0.6 !important;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.banner {
+    position: absolute;
+    width: 100%;
+}
+
+.header-content{
+    background-color: #00796B;
+    padding: 80px;
+    color: #E0F2F1;
+}
+
+.transparent-title{
+    opacity: 0.9;
+}
+
+.sub-title {
+    text-align: center !important;
 }

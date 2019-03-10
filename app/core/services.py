@@ -87,7 +87,6 @@ def find_auto_complete_species():
 def find_species_experts():
     selected_key = request.args.get('selected_key', '')
     species_expert_data = get_species_experts_data(selected_key)
-    print(species_expert_data)
     return json.dumps(species_expert_data)
 
     

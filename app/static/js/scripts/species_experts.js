@@ -16,6 +16,7 @@ $(document).ready(function(){
                         '<th scope="col">Email</th>'+
                         '<th scope="col">Affiliation</th>'+
                         '<th scope="col">Tags</th>'+
+                        '<th scope="col">Work Done</th>'+
                      '</tr>'+
                     '</thead>'+
                     '<tbody>';
@@ -34,7 +35,21 @@ $(document).ready(function(){
                             table_body += val.affiliation;
                             table_body += '</td>';
                             table_body += '<td>';
-                            table_body += val.tags;
+                            if(val.tags){
+                                table_body += val.tags;
+                            }    
+                            else{
+                                table_body += '';
+                            }
+                            table_body += '</td>';
+                            table_body += '<td>';
+                            if(val.author_work){
+                                table_body += val.author_work;
+                            }
+                            else{
+                                table_body += '';
+                            }
+                            
                             table_body += '</td>';
                         table_body +=  '</tr>';
                     })

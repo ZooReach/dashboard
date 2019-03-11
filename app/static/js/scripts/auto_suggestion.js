@@ -2,7 +2,7 @@ $( function() {
     $( "#species-autocomplete" ).autocomplete({ 
       source: function (request, response) {
           $.ajax({
-                url: '/find-experts',
+                url: '/find-species',
                 dataType: "json",
                 data : {search_key : $('#species-autocomplete').val()},
                 success : function (data) {

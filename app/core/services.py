@@ -75,6 +75,10 @@ def render_experts():
     return render_template('species_experts/find_experts.html', ckan_url=environment_details['ckan'], parent_data=data)
 
 
+def render_report():
+    return render_template('reports/report.html', ckan_url=environment_details['ckan'])
+
+
 def find_auto_complete_species():
     search_key = request.args.get('search_key', '')
     species_data = get_all_species_details()

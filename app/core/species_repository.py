@@ -97,7 +97,7 @@ def getSpeciesDetail(category_name, species_name):
 
 
 def get_all_species_details():
-    return get_result_record(get_data_from_ckan(form_species_query(form_sql_query_with_meta_data_table(select_parameters=['*']))))
+    return get_result_record(get_data_from_ckan(form_sql_query(resource_id=meta_data_resource_id, select_parameters=['*'])))
 
 
 def get_species_experts_data(parent_id):

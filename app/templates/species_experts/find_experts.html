@@ -1,7 +1,7 @@
 {% extends 'common/layout.html' %}
 
 {% block container %}
-<div class="form-group find-expert" id="select-div">
+<div class="form-group find-species" id="select-div">
   <select class="form-control" id="species-select">
     <option value = "">Choose species to find experts</option>
     {% for metadata in parent_data %}
@@ -11,7 +11,7 @@
 </div>
 
 <div class="form-group">
-    <div class="inner find-expert" id="expert-table-div">
+    <div class="inner find-species" id="expert-table-div">
         
     </div>
 </div>

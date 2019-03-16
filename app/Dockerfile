@@ -5,6 +5,7 @@ RUN chmod 755 /app
 RUN git clone https://github.com/ZooReach/visual
 RUN mv /visual/app/apis/* /app/apis/
 RUN ls /visual/app/static/js
+RUN chmod -R 777 /app
 RUN ls /app/static/js/visualization/
 RUN mv /visual/app/static/js/* /app/static/js/visualization/
 RUN mv /visual/app/helper /app/helper

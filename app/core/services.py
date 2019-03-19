@@ -1,7 +1,7 @@
 from flask import render_template, request
 
 from .category import get_home_page, get_category
-from .file_operations import get_visual_files
+from .file_operations import get_visual_files, get_visual_file
 from .species_repository import get_parent_details, getSpeciesDetail, get_all_species_details, get_home_page_data, get_category_data, get_species_experts_data
 from ..utils.constants import environment_details, display_details  
 from ..utils.extract_value import get_base_url_till_given_string, split_path
@@ -93,6 +93,11 @@ def find_species_experts():
     species_expert_data = get_species_experts_data(selected_key)
     return json.dumps(species_expert_data)
 
+
+def get_visual_report(filename):
+    js_files=get_visual_file(filename)
+    print(js_files)
+    return json.dumps(js_files)
     
 
 

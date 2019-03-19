@@ -23,46 +23,46 @@ $( function() {
 
     }); 
 
+    function doesFileExist(urlToFile) {
+  
+        var xhr = new XMLHttpRequest();
+        xhr.open('HEAD', urlToFile, false);
+        xhr.send();
+       
+        if (xhr.status == "404") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     $("#submit_search_data").click(function(){
         var search_key  = $('#species-autocomplete').val();
         var json_data = {}
-        var url = `/api/${search_key}`;
-        var res = d3.json(url);
-            d3.json(url).then( function (json_data) {   
-            var chart = c3.generate({
-                size: {
-                height: 400,
-                width: 400
-            },
-            bindto :"#visual_report",
-            data: {
-                json: json_data['data'],
-                    type : 'bar',
-                    keys: {
-                    x: 'category_level1',
-                    value: ['count']
+        var url = `/${search_key}`;
+        var base_url = window.location.origin;
+        $.ajax({
+            url: url,
+            dataType: "json",
+            data : {search_key : $('#species-autocomplete').val()},
+            success : function (data) {
+                
+                var source_file = 'static/'+data[0];
+                if(doesFileExist(base_url+'/'+source_file)){
+                    
+                    var script = document.createElement('script');
+                    script.src = source_file;
+                    document.head.appendChild(script);
+                }
+                else{
+                    
+                    document.getElementById("report-container").innerHTML = "No Report Found";
+                    document.getElementById("visual_description").innerHTML = "";
                 }
             },
-                axis: {
-                        x: {
-                            type: 'category'
-                        }
-                },
-            bar: {
-                width: {
-                    ratio: 0.15
-                }
+            error: function(xhr, status, error){
+                alert("error");
             }
-            });
-
-
-            setTimeout(function () {
-            chart.resize({height:400})
-            }, 1000);
-
-            }, function(error){
-                document.getElementById("visual_report").innerHTML = "No Report Found";
-            });
-
+      });
     });
   });

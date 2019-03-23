@@ -1,7 +1,3 @@
-.container {
-  margin-top: -21px;
-}
-
 .nav-style-container{
   opacity: 0.6 !important;
   filter: alpha(opacity=60); /* For IE8 and earlier */

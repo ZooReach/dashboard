@@ -2,8 +2,9 @@ from flask import render_template, request
 
 from .category import get_home_page, get_category
 from .file_operations import get_visual_files, get_visual_file
-from .species_repository import get_parent_details, getSpeciesDetail, get_all_species_details, get_home_page_data, get_category_data, get_species_experts_data
-from ..utils.constants import environment_details, display_details  
+from .species_repository import get_parent_details, getSpeciesDetail, get_all_species_details, get_home_page_data, \
+    get_species_experts_data
+from ..utils.constants import environment_details, display_details
 from ..utils.extract_value import get_base_url_till_given_string, split_path
 from ..utils.auto_suggestion_using_trie import autocomplete_main
 from importlib import import_module
@@ -12,18 +13,19 @@ import json
 
 def render_home():
     data = get_home_page()
-    return render_template('home/home.html', ckan_url=environment_details['ckan'], json_data=data)
+    return render_template('home/home.html', ckan_url=environment_details['ckan'], json_data=data,
+                           js_files=get_visual_files(0))
 
 
 def render_category(path):
-    parent_data = get_parent_details(path.split('/')[-1:][0])
+    path_array = path.split('/')
+    parent_data = get_parent_details(path_array[-1])
     category_path = split_path(path)
 
     if parent_data:
-        data = get_category(parent_data['_id'], parent_data)
+        data = get_category(parent_data['_id'], parent_data, path_array[0])
     else:
-        return render_species_details(category_path)
-
+        return render_species_details(path_array)
     return render_template('category/category.html', ckan_url=environment_details['ckan'],
                            json_data=data,
                            parent_data=parent_data,
@@ -35,8 +37,7 @@ def render_category(path):
 
 def render_species_details(path):
     species_name = get_species_name(category_path=path)
-    category_name = get_category_name(path)
-    species_record = getSpeciesDetail(category_name, species_name)
+    species_record = getSpeciesDetail(path[0], path[-1])
     species_display_info = _get_filtered_details(species_record=species_record, keys=display_details)
     species_display_info['is_species'] = 'true'
     return render_template('species_detail/species_detail.html', ckan_url=environment_details['ckan'],
@@ -86,7 +87,7 @@ def find_auto_complete_species():
     if not autocompleted_data:
         return json.dumps(autocompleted_data)
     return json.dumps(autocompleted_data[:10])
-    
+
 
 def find_species_experts():
     selected_key = request.args.get('selected_key', '')
@@ -95,11 +96,5 @@ def find_species_experts():
 
 
 def get_visual_report(filename):
-    js_files=get_visual_file(filename)
-    print(js_files)
+    js_files = get_visual_file(filename)
     return json.dumps(js_files)
-    
-
-
-
-    

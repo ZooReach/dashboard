@@ -32,7 +32,7 @@ def find_species():
 
 
 @app.route('/category/<path:filename>')
-def category(filename): 
+def category(filename):
     return render_category(filename)
 
 

@@ -49,7 +49,6 @@ $( function() {
                 
                 var source_file = 'static/'+data[0];
                 if(doesFileExist(base_url+'/'+source_file)){
-                    
                     var script = document.createElement('script');
                     script.src = source_file;
                     document.head.appendChild(script);
@@ -61,7 +60,7 @@ $( function() {
                 }
             },
             error: function(xhr, status, error){
-                alert("error");
+                console.log("some error occurred");
             }
       });
     });

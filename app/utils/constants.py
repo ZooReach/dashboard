@@ -13,8 +13,6 @@ display_details = ['phylum', 'class', 'family', 'redlist_category']
 
 meta_data_resource_id = "2804721b-d474-4f00-8249-49dc7d996d79"
 
-visual_meta_data_resource_id = "847896c8-ad47-4bf7-a5e0-05c2c41d0c64"
-
 authorization_key = "223844a7-bf47-411e-bb9b-16f6eada21f4"
 
 visual_data_map_file_path = 'app/helper/species_metadata.json'

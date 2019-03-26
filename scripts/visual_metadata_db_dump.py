@@ -1,6 +1,6 @@
 ## run this file with command 'python -m scripts.visual_metadata_db_dump' from dashboard folder##
 
-from app.utils.constants import api, authorization_key, visual_meta_data_resource_id
+from app.utils.constants import api, authorization_key, visual_resource_id
 from app.utils.rest_client import post
 import requests
 import sys
@@ -22,7 +22,7 @@ class VisualMetaData():
         }
         body = {
 
-            "resource_id": visual_meta_data_resource_id,
+            "resource_id": visual_resource_id,
             "force":"True",
             "primary_key":["id"]
         }
@@ -35,8 +35,8 @@ class VisualMetaData():
 
 
     def get_species_data(self):
-        records = []
-        for index, metadata in enumerate(self.species_list, start=1):
+        records = [{"id":1, "metadata_id":0, "visual":"test"}]
+        for index, metadata in enumerate(self.species_list, start=2):
             entry = {
                 "id":index,
                 "metadata_id":metadata.get("id", ''),
@@ -56,7 +56,7 @@ class VisualMetaData():
         }
         body =  {
 
-            "resource_id": visual_meta_data_resource_id,
+            "resource_id": visual_resource_id,
             "method":"upsert",
             "force":"True",
             "primary_key":["id"],

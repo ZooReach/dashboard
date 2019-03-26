@@ -58,16 +58,21 @@ class TestVisualMetadataTest(TestCase):
         records = [
                     {
                     "id":1,
+                    "metadata_id":0,
+                    "visual":"test"
+                    },
+                    {
+                    "id":2,
                     "metadata_id":1,
                     "visual":"spiders"
                     },
                     {
-                        "id":2,
+                        "id":3,
                         "metadata_id":2,
                         "visual":"fishes"
                     },
                     {
-                        "id":3,
+                        "id":4,
                         "metadata_id":258,
                         "visual":"primates"
                     }]

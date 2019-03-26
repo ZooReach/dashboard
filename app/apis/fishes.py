@@ -10,7 +10,7 @@ def main():
 
 def get_result():
     url = api['datastore_search_sql']
-    query = 'SELECT COUNT(_id), category_level1 FROM "d2334ebf-5f4b-4f38-b383-c7a75396ac0e" GROUP BY category_level1'
+    query = 'SELECT COUNT(_id), category_level1 FROM "609b1130-2169-471b-978c-a0b6e344795d" GROUP BY category_level1'
     query_param = {"sql": query}
     response = get(url=url, queryparams=query_param)
     ckan_species_list_response = response['result']['records']

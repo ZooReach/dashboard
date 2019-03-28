@@ -19,4 +19,4 @@ visual_data_map_file_path = 'app/helper/species_metadata.json'
 
 visual_resource_id = '4c1b2e43-379f-4d9f-8a4b-0f5bc46a8778'
 
-experts_resource_id = '315c64b1-1b26-40e2-bd7c-3818c6ccdcd6'
+experts_resource_id = '8895eddc-177b-4233-88d7-defd53eeb2fb'

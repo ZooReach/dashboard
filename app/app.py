@@ -15,11 +15,9 @@ def home():
 def experts():
     return render_experts()
 
-
 @app.route('/report')
 def report():
     return render_report()
-
 
 @app.route('/find-experts')
 def find_experts():
@@ -32,7 +30,7 @@ def find_species():
 
 
 @app.route('/category/<path:filename>')
-def category(filename):
+def category(filename): 
     return render_category(filename)
 
 

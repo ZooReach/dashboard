@@ -98,3 +98,4 @@ def find_species_experts():
 def get_visual_report(filename):
     js_files = get_visual_file(filename)
     return json.dumps(js_files)
+

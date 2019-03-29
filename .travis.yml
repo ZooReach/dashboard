@@ -7,6 +7,8 @@ services:
   - docker
 stages:
   - test
+  - generate_visual_map
+  - visual_metadata_dump
   - docker_hub_push
   - deploy_dev
 addons:
@@ -17,6 +19,12 @@ jobs:
     - stage: test
       name: Test
       script: "./cmd-dict.sh unittest"
+    - stage: generate_visual_map
+      name: generate visual map
+      script: "./cmd-dict.sh generate_visual_map"
+    - stage: visual_metadata_dump
+      name: visual metadata dump
+      script: "./cmd-dict.sh visual_metadata_dump"  
     - stage: docker_hub_push
       name: Docker hub push
       script: "./cmd-dict.sh dockerHubPush"

@@ -34,8 +34,21 @@ function unittest {
     pytest -v
 }
 
+function generate_visual_map {
+	set -e
+	GITHUB_TOKEN=$GITHUB_TOKEN
+	python -m scripts.create_species_metadata_map "$GITHUB_TOKEN"
+}
+
+function visual_metadata_dump {
+   set -e
+   python -m scripts.visual_metadata_db_dump
+}
+
 case "$1" in 
 	dockerHubPush) dockerHubPush ;;
 	deploy) deploy ;;
 	unittest) unittest ;;
+	generate_visual_map) generate_visual_map ;;
+	visual_metadata_dump) visual_metadata_dump ;;
 esac

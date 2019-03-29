@@ -36,12 +36,14 @@ function unittest {
 
 function generate_visual_map {
 	set -e
+	pip install -r requirements_test.txt
 	GITHUB_TOKEN=$GITHUB_TOKEN
 	python -m scripts.create_species_metadata_map "$GITHUB_TOKEN"
 }
 
 function visual_metadata_dump {
    set -e
+   pip install -r requirements_test.txt
    python -m scripts.visual_metadata_db_dump
 }
 

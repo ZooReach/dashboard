@@ -35,7 +35,7 @@ class VisualMetaData():
 
 
     def get_species_data(self):
-        records = [{"id":1, "metadata_id":0, "visual":"test"}]
+        records = []
         for index, metadata in enumerate(self.species_list, start=2):
             entry = {
                 "id":index,

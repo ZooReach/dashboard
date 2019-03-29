@@ -32,6 +32,21 @@ class TestSpeciesMetaData(unittest.TestCase):
                             ]
         meta_data = metadata.create_visual_metadata_map(species_records)
         self.assertEqual([{"id": 1, "visual": "Spiders"}, {"id": 2, "visual": "Fishes"}], meta_data)
+   
+
+    def test_metadata_does_not_exists(self):
+        metadata = MetaData()
+        metadata_id = 4
+        data = [{'id':1},{'id':3},{'id':2},{'id':5}, {'id':6},{'id':9}]
+        self.assertEqual(metadata.metadata_exists(metadata_id, data), False)
+
+
+    def test_metadata_exist(self):
+        metadata = MetaData()
+        metadata_id = 3
+        data = [{'id':1},{'id':3},{'id':2},{'id':5}, {'id':6},{'id':9}]
+        self.assertEqual(metadata.metadata_exists(metadata_id, data), True)
+
         
     
     # def test_commit_species_visual_metadata(self):

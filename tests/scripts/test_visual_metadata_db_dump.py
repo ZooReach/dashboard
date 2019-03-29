@@ -57,22 +57,17 @@ class TestVisualMetadataTest(TestCase):
     def test_get_species_data(self):
         records = [
                     {
-                    "id":1,
-                    "metadata_id":0,
-                    "visual":"test"
+                        "id":1,
+                        "metadata_id":1,
+                        "visual":"spiders"
                     },
                     {
-                    "id":2,
-                    "metadata_id":1,
-                    "visual":"spiders"
-                    },
-                    {
-                        "id":3,
+                        "id":2,
                         "metadata_id":2,
                         "visual":"fishes"
                     },
                     {
-                        "id":4,
+                        "id":3,
                         "metadata_id":258,
                         "visual":"primates"
                     }]

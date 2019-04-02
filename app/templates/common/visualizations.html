@@ -3,11 +3,14 @@
 <div class="visualization">
     <div class="container-fluid body-content">
         {% for files in js_files %}
-        <script src="{{ url_for('static', filename=files) }}"></script>
+        <div class="{{files.split('/')[-1].split('.')[0]}}">
+            <script src="{{ url_for('static', filename=files) }}"></script>
+        </div>
+        <div id="{{files.split('/')[-1].split('.')[0]}}" class="visual_description">
+            </div>
         {% endfor %}
     </div>
-    <div id="visual_description" class="visual_description">
-    </div>
+    
 
 </div>
 

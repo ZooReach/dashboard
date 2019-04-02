@@ -1,7 +1,7 @@
 import os
 import json
 import functools
-from .species_repository import get_visual_data
+from .species_repository import get_visual_data, get_all_visual_data_files
 
 
 def get_os_directory():
@@ -22,8 +22,15 @@ def get_visual_files(id):
     return list(map(lambda files: os.path.join('js', 'visualization', '.'.join([files, 'js'])),
                     get_visual_map_from_db(id)))
 
+
+def get_all_visual_chart_files():
+    return list(map(lambda files: os.path.join('js', 'visualization', '.'.join([files, 'js'])),
+                    get_all_visual_data_files()))                        
+
+
 def get_visual_file(species_name):
     return [os.path.join('js', 'visualization' , '.'.join([species_name,'js']))]
+
 
 def get_json_file_path_from_data(root_category):
     return os.path.join(get_os_directory(), 'data', "".join([root_category, '.json']))

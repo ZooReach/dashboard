@@ -7,7 +7,7 @@ d3.json("/api/test").then( function (json_data) {
     height: 400,
     width: 400
   },
-  bindto :".container-fluid",
+  bindto :".test",
   data: {
       json: json_data['data'],
       type : 'bar',
@@ -36,5 +36,6 @@ d3.json("/api/test").then( function (json_data) {
       },
 
   });
+  document.getElementById("test").innerHTML = "Chart depicts number of categories available for species";
 });
    

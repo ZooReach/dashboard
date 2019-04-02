@@ -1,7 +1,7 @@
 from flask import render_template, request
 
 from .category import get_home_page, get_category
-from .file_operations import get_visual_files, get_visual_file
+from .file_operations import get_visual_files, get_visual_file, get_all_visual_chart_files
 from .species_repository import get_parent_details, getSpeciesDetail, get_all_species_details, get_home_page_data, \
     get_species_experts_data
 from ..utils.constants import environment_details, display_details
@@ -77,7 +77,7 @@ def render_experts():
 
 
 def render_report():
-    return render_template('reports/report.html', ckan_url=environment_details['ckan'])
+    return render_template('reports/report.html', ckan_url=environment_details['ckan'], js_files=get_all_visual_chart_files())
 
 
 def find_auto_complete_species():

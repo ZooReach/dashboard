@@ -7,7 +7,7 @@ d3.json("/api/fishes").then( function (json_data) {
         height: 400,
         width: 400
     },
-    bindto :".container-fluid",
+    bindto :".fishes",
     data: {
         json: json_data['data'],
         type : 'bar',
@@ -33,7 +33,7 @@ setTimeout(function () {
     chart.resize({height:400})
 }, 1000);
 
-document.getElementById("visual_description").innerHTML = "Chart depicts number of subcategories available";
+document.getElementById("fishes").innerHTML = "Chart depicts number of subcategories available for fishes";
 
 }, function(error){
          

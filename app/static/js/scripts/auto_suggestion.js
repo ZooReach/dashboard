@@ -49,14 +49,23 @@ $( function() {
                 
                 var source_file = 'static/'+data[0];
                 if(doesFileExist(base_url+'/'+source_file)){
+                    var reportContainer = document.getElementById("report-container");
+                    reportContainer.innerHTML = "";
+                    var visual_chart_element = document.createElement('div');
+                    visual_chart_element.className = search_key;
+                    reportContainer.appendChild(visual_chart_element);
                     var script = document.createElement('script');
                     script.src = source_file;
+                    var description = document.createElement('div');
+                    description.id = search_key;
+                    description.innerHTML = "Chart depicts number of subcategories available";
+                    reportContainer.appendChild(description);
+                    
                     document.head.appendChild(script);
                 }
                 else{
                     
                     document.getElementById("report-container").innerHTML = "No Report Found";
-                    document.getElementById("visual_description").innerHTML = "";
                 }
             },
             error: function(xhr, status, error){

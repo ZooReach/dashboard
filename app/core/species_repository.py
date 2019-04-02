@@ -60,6 +60,11 @@ def get_visual_data(id):
                                          condition={'metadata_id': str(id)})))))
 
 
+def get_all_visual_data_files():
+    return list(map(lambda x: x['visual'], get_result_record(get_data_from_ckan(
+        form_sql_query_with_visual_table(select_parameters=['visual'])))))
+
+
 def get_home_page_data():
     return get_result_record(get_data_from_ckan(form_sql_query_with_meta_data_table(
         select_parameters=['_id', 'id', 'name', 'kingdom', 'description', 'image', 'parent_id'],

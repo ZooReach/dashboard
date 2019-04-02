@@ -1,0 +1,23 @@
+{% extends 'common/layout.html' %}
+
+{% block container %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<div class="input-group find-species">
+    <div class="input-group-btn">
+       <h4>Visualization Chart</h4>
+    </div>
+</div>
+<div class="form-group">
+  <div class="inner find-species" id="visual_report">
+    <div id = "report-container">
+      {% for files in js_files %}
+          <div class="{{files.split('/')[-1].split('.')[0]}}">
+              <script src="{{ url_for('static', filename=files) }}"></script>
+          </div>
+          <div id="{{files.split('/')[-1].split('.')[0]}}">
+          </div>
+      {% endfor %}
+    </div> 
+  </div>
+</div>
+{% endblock container %}

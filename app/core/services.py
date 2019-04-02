@@ -99,3 +99,8 @@ def get_visual_report(filename):
     js_files = get_visual_file(filename)
     return json.dumps(js_files)
 
+
+def get_visual_chart(filename):
+    js_files = get_visual_file(filename)
+    return render_template('common/visual_chart.html', js_files=js_files)
+

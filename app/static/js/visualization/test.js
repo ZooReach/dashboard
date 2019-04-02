@@ -19,7 +19,7 @@ d3.json("/api/test").then( function (json_data) {
         console.log(d);
         var base_url = window.location.origin;
         window.open(
-        base_url+'/report',
+        base_url+'/visual/test',
         '_blank' 
     );
     },

@@ -14,7 +14,15 @@ d3.json("/api/fishes").then( function (json_data) {
         keys: {
             x: 'category_level1',
             value: ['count']
-        }
+        },
+        onclick: function (d, i) { 
+            console.log(d);
+            var base_url = window.location.origin;
+            window.open(
+            base_url+'/visual/fishes',
+            '_blank' 
+        );
+        },
     },
         axis: {
                 x: {

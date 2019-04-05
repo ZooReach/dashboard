@@ -104,3 +104,5 @@ def get_visual_chart(filename):
     js_files = get_visual_file(filename)
     return render_template('common/visual_chart.html', js_files=js_files)
 
+def about_us():
+    return render_template('home/about.html')

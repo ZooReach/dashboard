@@ -5,6 +5,7 @@ from mock import patch, Mock
 
 class ServicesTestCase(TestCase):
 
+
     @patch("app.core.services.get_visual_files")
     @patch("app.core.services.get_home_page")
     @patch("app.core.services.render_template")
@@ -21,6 +22,7 @@ class ServicesTestCase(TestCase):
         render_template.assert_called_once_with('home/home.html', ckan_url=envvar, js_files=visual_file,
                                                 json_data=data)
 
+
     @patch("app.core.services.split_path")
     @patch("app.core.services.get_parent_details")
     @patch("app.core.services.render_species_details")
@@ -35,6 +37,7 @@ class ServicesTestCase(TestCase):
         get_parent_details.assert_called_with(path)
         split_path.assert_called_with(path)
         render_species_details.assert_called_with(['not_parent'])
+
 
     @patch("app.core.services.environment_details")
     @patch("app.core.services.get_base_url_till_given_string")
@@ -71,6 +74,7 @@ class ServicesTestCase(TestCase):
                                            js_files=visual_file_return_value,
                                            base_url=get_base_url_return_value)
 
+
     @patch("app.core.services.getSpeciesDetail")
     @patch("app.core.services.render_template")
     def test_render_species_details(self, render_template, getSpeciesDetail):
@@ -80,12 +84,15 @@ class ServicesTestCase(TestCase):
         path = ['fishes', 'anamalia']
         self.assertEqual(services.render_species_details(path), 'success')
 
+
     def test_get_species_name(self):
         self.assertEqual(services.get_species_name(['array1', 'array2', 'array3']), 'array3')
         self.assertEqual(services.get_species_name(['array1']), 'array1')
 
+
     def test_get_category_name(self):
         self.assertEqual(services.get_category_name(['category', 'fish', 'Eels', 'freshwaterEels']), 'Eels')
+
 
     @patch("app.core.services.import_module")
     @patch("app.core.services.split_path")

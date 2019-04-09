@@ -157,3 +157,25 @@ class RepositoryTestCase(TestCase):
         validateAndExtractResult.return_value = 2
         result = species_repository.get_resource_id_ckan("fishes")
         self.assertEqual(result, 2)
+
+    
+    @patch("app.core.species_repository.form_sql_query")
+    @patch("app.core.species_repository.get_data_from_ckan")
+    @patch("app.core.species_repository.get_result_record")
+    def test_get_all_species_details(self, get_result_record, get_data_from_ckan, form_sql_query):
+        form_sql_query.return_value = "select * from metdata_table"
+        get_data_from_ckan.return_value = {"result":{"record":[{"id":1, "name":"any", "resource_id":"12334"}]}}
+        get_result_record.return_value = [{"id":1, "name":"any", "resource_id":"12334"}]
+        result = species_repository.get_all_species_details()
+        self.assertEqual(result, [{"id":1, "name":"any", "resource_id":"12334"}])
+
+        
+    @patch("app.core.species_repository.form_sql_query")
+    @patch("app.core.species_repository.get_data_from_ckan")
+    @patch("app.core.species_repository.get_result_record")
+    def test_get_species_experts_data(self, get_result_record, get_data_from_ckan, form_sql_query):
+        form_sql_query.return_value = "select * from expert_table"
+        get_data_from_ckan.return_value = {"result":{"record":[{"id":1, "name":"any", "work_done":"12334"}]}}
+        get_result_record.return_value = [{"id":1, "name":"any", "work_done":"12334"}]
+        result = species_repository.get_species_experts_data(1)
+        self.assertEqual(result, [{"id":1, "name":"any", "work_done":"12334"}])

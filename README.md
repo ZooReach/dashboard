@@ -4,6 +4,7 @@
 ***Run outside docker***
 
 python3 -m venv localenv
+
 source localenv/bin/activate
 
 cd app

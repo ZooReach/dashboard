@@ -19,7 +19,7 @@ more-itertools==4.3.0
 pathtools==0.1.2
 pbr==5.1.1
 pluggy==0.8.0
-py==1.7.0
+py==1.10.0
 PyGithub==1.43.5
 PyJWT==1.7.1
 pytest==4.0.1

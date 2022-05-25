@@ -21,7 +21,7 @@ pbr==5.1.1
 pluggy==0.8.0
 py==1.7.0
 PyGithub==1.43.5
-PyJWT==1.7.1
+PyJWT==2.4.0
 pytest==4.0.1
 pytest-flask==0.14.0
 pytest-watch==4.2.0
